@@ -12,4 +12,10 @@ public class ReverseWordsTest {
         assertEquals("blue is sky the", ReverseWords.reverseString("the sky is blue"));
         assertEquals("blue is sky the", ReverseWords.reverseStringJava8("the sky is blue"));
     }
+
+    @Test
+    public void reverseStringWithSpecialCharacters(){
+        assertEquals("c,b$a", ReverseWords.reverseStringWithSpecialCharacters("a,b$c"));
+        assertEquals("ed,c,bA!$", ReverseWords.reverseStringWithSpecialCharacters("Ab,c,de!$"));
+    }
 }
