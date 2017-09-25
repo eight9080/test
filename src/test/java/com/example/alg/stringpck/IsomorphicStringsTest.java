@@ -10,6 +10,7 @@ public class IsomorphicStringsTest {
 
         assertTrue(IsomorphicStrings.isIsomorphic("egg", "add"));
         assertFalse(IsomorphicStrings.isIsomorphic("foo", "bar"));
+        assertTrue(IsomorphicStrings.isIsomorphic("dgg", "add"));
 
     }
 
