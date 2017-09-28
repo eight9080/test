@@ -11,7 +11,7 @@ public class Intersection {
      * Sort both arrays, use two pointers
      * Time complexity: O(nlogn)
      */
-    public Integer[] intersection(int[] nums1, int[] nums2) {
+    public Integer[] intersectionTwoPointers(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
 
@@ -30,7 +30,23 @@ public class Intersection {
                 indexNum2++;
             }
         }
-        Integer [] temp = new Integer[result.size()];
+        return result.toArray(new Integer[result.size()]);
+    }
+
+    /**
+     * Binary search
+
+     Time complexity: O(nlogn)
+
+     */
+    public Integer[] intersectionBinarySearch(int[] nums1, int[] nums2) {
+        Arrays.sort(nums2);
+        Set<Integer> result = new HashSet<>();
+        for(int elem: nums1){
+            if(Arrays.binarySearch(nums2, elem)>-1){
+                result.add(elem);
+            }
+        }
         return result.toArray(new Integer[result.size()]);
     }
 }

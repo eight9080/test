@@ -8,7 +8,14 @@ public class IntersectionTest {
     @Test
     public void intersection() throws Exception {
         final Intersection intersection = new Intersection();
-        final Integer[] result = intersection.intersection(new int[]{1, 4, 2, 8, 0, 11}, new int[]{1, 5, 4, 0, 9, 7});
+        final Integer[] result = intersection.intersectionTwoPointers(new int[]{1, 4, 2, 8, 0, 11}, new int[]{1, 5, 4, 0, 9, 7});
+        assertArrayEquals(new Integer[]{0,1, 4}, result);
+    }
+
+    @Test
+    public void intersectionBinarySearch() throws Exception {
+        final Intersection intersection = new Intersection();
+        final Integer[] result = intersection.intersectionBinarySearch(new int[]{1, 4, 2, 8, 0, 11}, new int[]{1, 5, 4, 0, 9, 7});
         assertArrayEquals(new Integer[]{0,1, 4}, result);
     }
 
