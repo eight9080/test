@@ -54,7 +54,7 @@ public class IntegerToEnglish {
 
         if (num >= 100) {
             int numHundred = num / 100;
-            sb.append(" " + map.get(numHundred) + " Hundred");
+            sb.append(" " + map.get(numHundred) + " "+ map.get(100));
             num = num % 100;
         }
 
@@ -104,5 +104,6 @@ public class IntegerToEnglish {
         map.put(70, "Seventy");
         map.put(80, "Eighty");
         map.put(90, "Ninety");
+        map.put(100, "Hundred");
     }
 }
