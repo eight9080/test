@@ -3,7 +3,7 @@ package com.example.alg;
 public class GreatestCommonDivisor {
 
     public static int gcdRec(int a, int b){
-        if(b==0){
+        if(a%b==0){
             return b;
         }
         return gcdRec(b, a % b);
