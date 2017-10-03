@@ -27,12 +27,12 @@ public class WordLadder {
                     if (chars[i] != c) {
                         chars[i] = c;
                         final String newWord = new String(chars);
-                        System.out.println("New words try: " + newWord);
+//                        System.out.println("New words try: " + newWord);
                         if (wordDict.contains(newWord)) {
-                            System.out.println("New words found: " + newWord);
+//                            System.out.println("New words found: " + newWord);
                             wordNodes.add(new WordNode(newWord, top.numSteps + 1));
                             wordDict.remove(newWord);
-                            System.out.println("Finishing: " + wordNodes);
+//                            System.out.println("Finishing: " + wordNodes);
                         }
                         chars[i] = temp;
                     }
