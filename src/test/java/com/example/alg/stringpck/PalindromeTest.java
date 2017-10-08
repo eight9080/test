@@ -10,6 +10,25 @@ import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 public class PalindromeTest {
+
+    @Test
+    public void shortestPalindrome2() throws Exception {
+        final Palindrome p = new Palindrome();
+
+        assertEquals("aaacecaaa", p.shortestPalindrome2("aacecaaa"));
+    }
+
+    @Test
+    public void shortestPalindrome() throws Exception {
+        final Palindrome p = new Palindrome();
+
+        assertEquals("aaacecaaa", p.shortestPalindrome("aacecaaa"));
+
+        assertEquals("acecaaceca", p.shortestPalindrome("aaceca"));
+
+        assertEquals("dcbabcd", p.shortestPalindrome("abcd"));
+    }
+
     @Test
     public void isValidPalindrome() throws Exception {
         assertTrue(Palindrome.isValidPalindrome("A man, a plan, a canal: Panama"));
