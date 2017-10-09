@@ -6,6 +6,13 @@ import static org.junit.Assert.*;
 
 public class BasicCalculatorTest {
     @Test
+    public void calculate2() throws Exception {
+        final BasicCalculator bc = new BasicCalculator();
+
+        assertEquals(7, bc.calculate(" 3+2*2 "));
+    }
+
+    @Test
     public void calculate() throws Exception {
 
         final BasicCalculator bc = new BasicCalculator();
