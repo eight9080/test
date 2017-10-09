@@ -1,6 +1,7 @@
 package com.example.alg.arraypkg;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 
 public class BasicCalculator {
@@ -19,87 +20,40 @@ public class BasicCalculator {
         // delete white spaces
         s = s.replaceAll(" ", "");
 
-        Deque<String> stack = new ArrayDeque<>();
+        int len = s.length();
+        int sign = 1;
+        int result = 0;
+        Deque<Integer> stack = new ArrayDeque<Integer>();
+
         final char[] chars = s.toCharArray();
-        for (char aChar : chars) {
-            if (isDigit(aChar) || isSign(aChar) || aChar == '(') {
-                stack.push(new String(new char[]{aChar}));
-            }
-            if (aChar == ')') {
-                int partialResult = getPartialResult(stack);
-                stack.push(String.valueOf(partialResult));
-            }
-        }
 
-        if(!stack.isEmpty()){
-            if(stack.size()==1){
-                return Integer.valueOf(stack.pop());
-            }else{
-                return getPartialResult(stack);
-            }
-        }
-        return 0;
-    }
-
-    private int getPartialResult(Deque<String> stack) {
-        int partialResult = 0;
-        Operation op = null;
-        while (!stack.isEmpty()) {
-            final String operator = stack.pop();
-            if (operator.equals("(")) {
-                break;
-            }
-            if (isDigit(operator)) {
-                if (op == null) {
-                    partialResult = Integer.valueOf(operator);
-                } else {
-                    partialResult = calculate(operator, partialResult, op);
-                    op = null;
+        for (int i = 0; i< chars.length; i++) {
+            char aChar = chars[i];
+            if(Character.isDigit(aChar)){
+                int sum = s.charAt(i) - '0';
+                while (i< len-1 && Character.isDigit(s.charAt(i+1))){
+                    sum = sum * 10 + s.charAt(i + 1) - '0';
+                    i++;
                 }
+                result += sum * sign;
+            }else if(s.charAt(i)=='+'){
+                sign =1;
+            }else if(s.charAt(i)=='-'){
+                sign =-1;
+            }else if(s.charAt(i)=='('){
+                stack.push(result);
+                stack.push(sign);
+                result=0;
+                sign=1;
+            }else if(s.charAt(i)==')'){
+                result = result * stack.pop() + stack.pop();
             }
-            if (isSign(operator)) {
-                op = Operation.from(operator);
-            }
+
+
         }
-        return partialResult;
+        return result;
     }
 
-    private int calculate(String operator, int partialResult, Operation op) {
-        if(op==Operation.PLUS){
-            return partialResult+ Integer.valueOf(operator);
-        }
-        if(op==Operation.MINUS){
-            return   Integer.valueOf(operator)-partialResult;
-        }
-        return 0;
-    }
 
-    private boolean isDigit(char num){
-        return num>='0' && num<='9';
-    }
-    private boolean isDigit(String num){
-        return num.matches("[-+]?\\d*\\.?\\d+");
-    }
-
-    private boolean isSign(char num){
-        return num=='+' || num=='-';
-    }
-
-    private boolean isSign(String num){
-        return num.equals("+") || num.equals("-");
-    }
-
-    enum Operation{
-        PLUS,
-        MINUS;
-
-        public static Operation from(String ch){
-            if(ch.equals("+")) return PLUS;
-            if(ch.equals("-")) return MINUS;
-            return null;
-        }
-
-
-    }
 
 }
