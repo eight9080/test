@@ -77,11 +77,42 @@ public class SearchArray {
     }
 
     /**
-     * Given a sorted array of integers, find the starting and ending position of a given target value. Your algorithm's runtime complexity must be in the order of O(log n). If the target is not found in the array, return [-1, -1].
+     * Given a sorted array of integers, find the starting and ending position of a given target value.
+     * Your algorithm's runtime complexity must be in the order of O(log n).
+     * If the target is not found in the array, return [-1, -1].
      * For example, given [5, 7, 7, 8, 8, 10] and target value 8, return [3, 4].
      */
     public int[] searchRange(int[] nums, int target) {
-        return null;
+        final int[] positions = new int[]{-1,-1};
+        if(nums == null || nums.length == 0){
+            return positions;
+        }
+
+        int low = 0;
+        int high = nums.length - 1;
+
+        while (high >= low) {
+            int mid = (low+high) / 2;
+            final int middleNum = nums[mid];
+            if (middleNum == target) {
+                int j = mid;
+                while (j-1 >= 0 && nums[j-1] == target) {
+                    j--;
+                }
+                int k = mid;
+                while (k+1 < nums.length && nums[k+1] == target) {
+                        k++;
+                }
+                positions[0] = j;
+                positions[1] = k;
+                break;
+            }else if(middleNum<target){
+                low = mid+1;
+            }else if(middleNum>target){
+                high = mid-1;
+            }
+        }
+        return positions;
     }
 
 }
