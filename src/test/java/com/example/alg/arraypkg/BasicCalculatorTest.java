@@ -10,6 +10,7 @@ public class BasicCalculatorTest {
         final BasicCalculator bc = new BasicCalculator();
 
         assertEquals(7, bc.calculate(" 3+2*2 "));
+        assertEquals(0, bc.calculate(" 0*0 "));
     }
 
     @Test

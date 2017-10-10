@@ -66,13 +66,54 @@ public class BasicCalculator {
      "3+2*2" = 7
      */
     public int calculate2(String s) {
+        // delete white spaces
+        s = s.replaceAll(" ", "");
+
+        int len = s.length();
+
+        int pm = 1; // 1 plus -1 minus
+        int md = -1; // 0 m 1 d
+        int result = 0;
+        int previousResult = 0;
+
         for(int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isDigit(c)) {
-
+                int sum = s.charAt(i) - '0';
+                while (i< len-1 && Character.isDigit(s.charAt(i+1))){
+                    sum = sum * 10 + s.charAt(i + 1) - '0';
+                    i++;
+                }
+                if(md==1){
+                    if(sum!=0) {
+                        previousResult = previousResult / sum;
+                    }else{
+                        previousResult = 0;
+                    }
+                    md=-1;
+                }else if(md==0){
+                    previousResult = previousResult* sum;
+                    md=-1;
+                }else {
+                    previousResult = sum;
+                }
+            }else if(s.charAt(i)=='+'){
+                result = result + previousResult * pm;
+                pm =1;
+            }else if(s.charAt(i)=='-'){
+                result = result + previousResult * pm;
+                pm =-1;
+            }else if(s.charAt(i)=='*'){
+                md = 0;
+            }else if(s.charAt(i)=='/'){
+                md = 1;
             }
+
         }
-        return 0;
+
+        result = result + previousResult * pm;
+
+        return result;
     }
 
 }
