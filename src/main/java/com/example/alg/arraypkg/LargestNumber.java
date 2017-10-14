@@ -13,7 +13,7 @@ public class LargestNumber {
      */
     public String largestNumber(int[] nums) {
          String numberStr = Arrays.stream(nums).boxed()
-                .map(i -> i.toString())
+                .map(Object::toString)
                 .sorted((a,b)-> (b+a).compareTo(a+b))
                 .reduce("", (a, b) -> a + b);
 
