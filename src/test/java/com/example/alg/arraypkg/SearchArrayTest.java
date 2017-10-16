@@ -6,6 +6,21 @@ import static org.junit.Assert.*;
 
 public class SearchArrayTest {
     @Test
+    public void searchRotateArrayI() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(1, sA.searchRotateArrayI(new int[]{3,1}, 1));
+        assertEquals(1, sA.searchRotateArrayI(new int[]{6,7,0,1,2,3,4,5}, 7));
+        assertEquals(-1, sA.searchRotateArrayI(new int[]{6,7,0,1,2,3,4,5}, 9));
+    }
+
+    @Test
+    public void searchRotateArrayR() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(1, sA.searchRotateArrayR(new int[]{6,7,0,1,2,3,4,5}, 7));
+        assertEquals(-1, sA.searchRotateArrayR(new int[]{6,7,0,1,2,3,4,5}, 9));
+    }
+
+    @Test
     public void searchRange() throws Exception {
         final SearchArray sA = new SearchArray();
         assertArrayEquals(new int[]{3, 4}, sA.searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8));
