@@ -6,6 +6,30 @@ import static org.junit.Assert.*;
 
 public class SearchArrayTest {
     @Test
+    public void findMinDuplicates() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(1, sA.findMinDuplicates(new int[]{10,1,10,10,10}));
+        assertEquals(1, sA.findMinDuplicates(new int[]{1,1}));
+        assertEquals(1, sA.findMinDuplicates(new int[]{1}));
+        assertEquals(0, sA.findMinDuplicates(new int[]{6,7,0,1,1,2,3,4,4,5}));
+        assertEquals(0, sA.findMinDuplicates(new int[]{2,3,4,0,1,2}));
+    }
+
+    @Test
+    public void findMin() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(0, sA.findMin(new int[]{6,7,0,1,2,3,4,5}));
+        assertEquals(0, sA.findMin(new int[]{2,3,4,0,1,2}));
+    }
+
+    @Test
+    public void searchRotateArrayIDuplicate() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(true, sA.searchRotateArrayIDuplicate(new int[]{6,7,0,1,1,2,3,4,4,5}, 7));
+        assertEquals(true, sA.searchRotateArrayIDuplicate(new int[]{2,3,4,0,1,2}, 1));
+    }
+
+    @Test
     public void searchRotateArrayI() throws Exception {
         final SearchArray sA = new SearchArray();
         assertEquals(1, sA.searchRotateArrayI(new int[]{3,1}, 1));

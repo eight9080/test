@@ -184,4 +184,115 @@ public class SearchArray {
     }
 
 
+    public boolean searchRotateArrayIDuplicate(int[] nums, int target) {
+        int left=0;
+        int right=nums.length-1;
+
+        while(left<=right) {
+            int mid = (left + right) / 2;
+            final int midElem = nums[mid];
+            if (midElem == target) {
+                return true;
+            }
+
+            if(nums[left]<midElem){
+                if(nums[left]<=target && target<midElem){
+                    right = mid-1;
+                }else{
+                    left = mid+1;
+                }
+            }else if(nums[left]>midElem){
+                if(midElem<target && target<=nums[right]){
+                    left=mid+1;
+                }else{
+                    right=mid-1;
+                }
+            }else {
+                left++;
+            }
+
+        }
+        return false;
+    }
+
+
+    /**
+     * Suppose a sorted array is rotated at some pivot unknown to you beforehand.
+     * (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
+
+     Find the minimum element.You may assume no duplicate exists in the array.
+     */
+    public int findMin(int[] nums) {
+        int left=0;
+        int right=nums.length-1;
+        if(nums.length==1){
+            return nums[0];
+        }
+
+        if(nums[left]<nums[right]){
+            return nums[left];
+        }
+
+        while(left<=right) {
+            int mid = (left + right) / 2;
+            final int midElem = nums[mid];
+
+            if (mid-1>=0 && nums[mid-1]>midElem ) {
+                return midElem;
+            }
+            if(mid+1<nums.length && midElem>nums[mid+1]){
+                return nums[mid+1];
+            }
+
+            if(nums[left]<midElem){
+                left = mid+1;
+            }else{
+                right = mid-1;
+            }
+
+        }
+
+        return nums[left];
+    }
+
+    public int findMinDuplicates(int[] nums) {
+        int left=0;
+        int right=nums.length-1;
+        if(nums.length==1){
+            return nums[0];
+        }
+
+        if(nums[left]<nums[right]){
+            return nums[left];
+        }
+
+        while(left<right) {
+
+            if(nums[left]<nums[right]){
+                return nums[left];
+            }
+
+            int mid = (left + right) / 2;
+            final int midElem = nums[mid];
+
+            if (mid-1>=0 && nums[mid-1]>midElem ) {
+                return midElem;
+            }
+            if(mid+1<nums.length && midElem>nums[mid+1]){
+                return nums[mid+1];
+            }
+
+            if(nums[left]<midElem){
+                left = mid+1;
+            }else if(nums[left]>midElem){
+                right = mid-1;
+            }else{
+                left++;
+            }
+
+        }
+
+        return nums[left];
+    }
+
 }
