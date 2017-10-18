@@ -8,6 +8,18 @@ import static org.junit.Assert.*;
 
 public class SubstringWordsTest {
     @Test
+    public void lengthOfLongestSubstringKDistinct() throws Exception {
+        final SubstringWords s = new SubstringWords();
+        assertEquals(11, s.lengthOfLongestSubstringKDistinct("abcadcacacaca", 3));
+    }
+
+    @Test
+    public void lengthOfLongestSubstringTwoDistinct() throws Exception {
+        final SubstringWords s = new SubstringWords();
+        assertEquals(10, s.lengthOfLongestSubstringTwoDistinct("abcbbbbcccbdddadacb"));
+    }
+
+    @Test
     public void findSubstring() throws Exception {
 
         final SubstringWords s = new SubstringWords();

@@ -8,34 +8,34 @@ public class SubstringWords {
      * You are given a string, s, and a list of words, words, that are all of the same length.
      * Find all starting indices of substring(s) in s that is a concatenation of each word in words
      * exactly once and without any intervening characters.
-
-     For example, given:
-     s: "barfoothefoobarman"
-     words: ["foo", "bar"]
-
-     You should return the indices: [0,9].
-     (order does not matter).
+     * <p>
+     * For example, given:
+     * s: "barfoothefoobarman"
+     * words: ["foo", "bar"]
+     * <p>
+     * You should return the indices: [0,9].
+     * (order does not matter).
      */
     public List<Integer> findSubstring(String s, String[] words) {
 
-        if(words==null || words.length==0){
-            return  Collections.emptyList();
+        if (words == null || words.length == 0) {
+            return Collections.emptyList();
         }
 
         final int wordLength = words[0].length();
-        if(s.length()<wordLength){
-            return  Collections.emptyList();
+        if (s.length() < wordLength) {
+            return Collections.emptyList();
         }
 
         Map<String, Integer> wordsFrequency = new HashMap<>();
-        for(String word: words){
+        for (String word : words) {
             wordsFrequency.putIfAbsent(word, 0);
-            wordsFrequency.put(word, wordsFrequency.get(word)+1);
+            wordsFrequency.put(word, wordsFrequency.get(word) + 1);
         }
 
         List<Integer> startPositions = new ArrayList<>();
 
-        for(int j=0; j<wordLength; j++) {
+        for (int j = 0; j < wordLength; j++) {
             Map<String, Integer> foundWords = new HashMap<>();
             int noWords = words.length;
             int start = -1;
@@ -90,8 +90,98 @@ public class SubstringWords {
         }
 
 
-
         return startPositions;
 
+    }
+
+    /**
+     * Given a string, find the longest substring that contains only two unique characters.
+     * For example, given "abcbbbbcccbdddadacb", the longest substring that contains 2 unique character is "bcbbbbcccb".
+     */
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+
+        int max = 0;
+
+        HashMap<Character, Integer> map = new HashMap<>();
+        int start = 0;
+        for (int i = 0; i < s.length(); i++) {
+            final char c = s.charAt(i);
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) + 1);
+            } else {
+                map.put(c, 1);
+            }
+
+
+            if (map.size() < 2) {
+                continue;
+            }
+            max = Math.max(max, i-start);
+
+            while (map.size()>2){
+                final char startCharacter = s.charAt(start);
+                int count = map.get(startCharacter);
+                if(count>1){
+                    map.put(startCharacter, count-1);
+                }else{
+                    map.remove(startCharacter);
+                }
+                start++;
+            }
+        }
+        max = Math.max(max, s.length()-start);
+
+        return max;
+
+    }
+
+
+    /**
+     * The following solution is corrected.
+     * Given "abcadcacacaca" and 3, it returns "cadcacacaca".
+     */
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        if (k == 0 || s == null || s.length() == 0)
+            return 0;
+
+        if(k>s.length()){
+            return 0;
+        }
+
+        int max = 0;
+        int start = 0;
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            final char c = s.charAt(i);
+            if(map.containsKey(c)){
+                map.put(c, map.get(c)+1);
+            }else{
+                map.put(c, 1);
+            }
+            if(map.size()<=k){
+                continue;
+            }
+            max = Math.max(max, i-start);
+
+            while (map.size()>k){
+                final char c1 = s.charAt(start);
+                int count = map.get(c1);
+                if(count>1){
+                    map.put(c1, count-1);
+                }else{
+                    map.remove(c1);
+                }
+                start++;
+            }
+
+        }
+
+        max = Math.max(max, s.length()-start);
+
+
+
+        return max;
     }
 }
