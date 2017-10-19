@@ -1,9 +1,6 @@
 package com.example.alg.arraypkg;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class MoveOps {
 
@@ -66,18 +63,49 @@ public class MoveOps {
 
         Map<Integer, Integer> numByIndex = new HashMap<>();
         for(int i = 0; i< nums.length; i++){
-            if(!numByIndex.containsKey(nums[i])){
-                numByIndex.put(nums[i], i);
-            }else{
+            if(numByIndex.containsKey(nums[i])){
                 final Integer pos1 = numByIndex.get(nums[i]);
-                if (Math.abs(pos1-i)<=k){
+                if (Math.abs(pos1-i)<=k) {
                     return true;
-                }else{
-                    numByIndex.put(nums[i], i);
                 }
             }
+            numByIndex.put(nums[i], i);
         }
         return false;
+
+    }
+
+    /**
+     * Given an array of integers, find out whether there are two distinct indices i and j
+     * in the array such that the absolute difference between nums[i] and nums[j] is
+     * at most t and the absolute difference between i and j is at most k.
+     */
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+
+        if(nums==null||nums.length<2||k<0||t<0)
+            return false;
+
+        TreeSet<Long> sortedElems = new TreeSet<>();
+
+        for(int i = 0; i< nums.length; i++){
+
+            final long num = (long)nums[i];
+
+            final long left = num - t;
+            final long right = num + t+1;
+            final SortedSet<Long> foundElems = sortedElems.subSet(left, right);
+            if(!foundElems.isEmpty()){
+                return true;
+            }
+            sortedElems.add(num);
+
+            if(i>=k){
+                sortedElems.remove((long)nums[i-k]);
+            }
+
+        }
+        return false;
+
 
     }
 

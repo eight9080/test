@@ -6,6 +6,16 @@ import static org.junit.Assert.*;
 
 public class MoveOpsTest {
     @Test
+    public void containsNearbyAlmostDuplicate() throws Exception {
+        final MoveOps m = new MoveOps();
+
+        assertFalse(m.containsNearbyAlmostDuplicate(new int [] {2147483647,-2147483647}, 1,2147483647));
+        assertFalse(m.containsNearbyAlmostDuplicate(new int [] {-1,2147483647}, 1,2147483647));
+        assertFalse(m.containsNearbyAlmostDuplicate(new int [] {-1,-1}, 1,-1));
+        assertTrue(m.containsNearbyAlmostDuplicate(new int [] {1,3,4,3,5}, 3,2));
+    }
+
+    @Test
     public void containsNearbyDuplicate2() throws Exception {
         final MoveOps m = new MoveOps();
         assertTrue(m.containsNearbyDuplicate2(new int [] {2,2}, 3));
