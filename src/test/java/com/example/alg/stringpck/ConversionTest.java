@@ -6,6 +6,13 @@ import static org.junit.Assert.*;
 
 public class ConversionTest {
     @Test
+    public void convert() throws Exception {
+        final Conversion c = new Conversion();
+        assertEquals("PAHNAPLSIIGYIR", c.convert("PAYPALISHIRING", 3));
+        assertEquals("PAHNAPLSIIGYIR", c.convert("PAYPALISHIRING", 3));
+    }
+
+    @Test
     public void countAndSay2() throws Exception {
         final Conversion c = new Conversion();
         assertEquals("1", c.countAndSay2(1));
