@@ -10,6 +10,17 @@ import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 public class PalindromeTest {
+    @Test
+    public void isValidPalidrome2() throws Exception {
+        final Palindrome p = new Palindrome();
+
+        assertTrue(p.isValidPalidrome2("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"));
+        assertTrue(p.isValidPalidrome2("cbbcc"));
+        assertTrue(p.isValidPalidrome2("acbca"));
+        assertTrue(p.isValidPalidrome2("aba"));
+        assertTrue(p.isValidPalidrome2("abca"));
+    }
+
 
     @Test
     public void shortestPalindrome2() throws Exception {

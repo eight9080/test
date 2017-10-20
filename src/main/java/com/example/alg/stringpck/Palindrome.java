@@ -14,14 +14,58 @@ public class Palindrome {
      For example, "Red rum, sir, is murder" is a palindrome, while "Programcreek is awesome" is not.
      */
     public static boolean isValidPalindrome(String s){
-        if(s==null || s.length()==0){
+        if(s==null ){
             return false;
+        }
+        if(s.length()==0){
+            return true;
         }
 
         s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
         for (int i = 0; i < s.length(); i++) {
             if(s.charAt(i)!=s.charAt(s.length()-1-i)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+     Example 1:
+     Input: "aba"
+     Output: True
+     Example 2:
+     Input: "abca"
+     Output: True
+     Explanation: You could delete the character 'c'.
+     Note:
+     The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
+     */
+    public boolean isValidPalidrome2(String s){
+        if(s==null ){
+            return false;
+        }
+        if(s.length()==0){
+            return true;
+        }
+
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        int left = -1, right = s.length();
+        while (++left < --right){
+            if(s.charAt(left)!=s.charAt(right)){
+                return isPalidrome(s, left-1, right) || isPalidrome(s, left, right+1);
+            }
+        }
+        return true;
+    }
+
+    private boolean isPalidrome(String s, int left, int right){
+        while (++left < --right){
+            if(s.charAt(left)!=s.charAt(right)){
                 return false;
             }
         }
