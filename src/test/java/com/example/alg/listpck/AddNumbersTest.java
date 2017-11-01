@@ -7,9 +7,9 @@ import static org.junit.Assert.*;
 public class AddNumbersTest {
     @Test
     public void addTwoNumbers() throws Exception {
-        final AddNumbers.ListNode l1 = new AddNumbers.ListNode(2, new AddNumbers.ListNode(4, new AddNumbers.ListNode(3)));
-        final AddNumbers.ListNode l2 = new AddNumbers.ListNode(5, new AddNumbers.ListNode(6, new AddNumbers.ListNode(4)));
-        final AddNumbers.ListNode expected = new AddNumbers.ListNode(7, new AddNumbers.ListNode(0, new AddNumbers.ListNode(8)));
+        final ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
+        final ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
+        final ListNode expected = new ListNode(7, new ListNode(0, new ListNode(8)));
 
         final AddNumbers a = new AddNumbers();
 
@@ -19,9 +19,9 @@ public class AddNumbersTest {
 
     @Test
     public void addTwoNumbers_carryLastDigit() throws Exception {
-        final AddNumbers.ListNode l1 = new AddNumbers.ListNode(5);
-        final AddNumbers.ListNode l2 = new AddNumbers.ListNode(5);
-        final AddNumbers.ListNode expected = new AddNumbers.ListNode(0, new AddNumbers.ListNode(1));
+        final ListNode l1 = new ListNode(5);
+        final ListNode l2 = new ListNode(5);
+        final ListNode expected = new ListNode(0, new ListNode(1));
 
         final AddNumbers a = new AddNumbers();
 

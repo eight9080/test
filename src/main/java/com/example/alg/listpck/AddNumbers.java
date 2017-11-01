@@ -1,7 +1,5 @@
 package com.example.alg.listpck;
 
-import java.util.Objects;
-
 /**
  * You are given two non-empty linked lists representing two non-negative integers.
  * The digits are stored in reverse order and each of their nodes contain a single digit.
@@ -13,35 +11,6 @@ import java.util.Objects;
  * Output: 7 -> 0 -> 8
  */
 public class AddNumbers {
-
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        ListNode(int x, ListNode next) {
-            val = x;
-            this.next = next;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            ListNode listNode = (ListNode) o;
-            return val == listNode.val &&
-                    Objects.equals(next, listNode.next);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(val, next);
-        }
-    }
 
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
