@@ -2,6 +2,8 @@ package com.example.alg.listpck;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class CycleListTest {
@@ -34,6 +36,16 @@ public class CycleListTest {
 
         final CycleList l = new CycleList();
         assertFalse(l.hasCycle(l1));
+
+    }
+
+    @Test
+    public void hasNoCycle2() throws Exception {
+
+        final ListNode list = ListNode.createList(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+
+        final CycleList l = new CycleList();
+        assertFalse(l.hasCycle(list));
 
     }
 

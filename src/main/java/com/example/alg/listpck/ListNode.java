@@ -1,5 +1,6 @@
 package com.example.alg.listpck;
 
+import java.util.List;
 import java.util.Objects;
 
 public class ListNode {
@@ -14,6 +15,17 @@ public class ListNode {
         val = x;
         this.next = next;
     }
+
+    public static ListNode createList(List<Integer> list){
+        final ListNode fakeHead = new ListNode(0);
+        ListNode current = fakeHead;
+        for(Integer value : list){
+            current.next = new ListNode(value);
+            current=current.next;
+        }
+        return fakeHead.next;
+    }
+
 
     @Override
     public boolean equals(Object o) {
