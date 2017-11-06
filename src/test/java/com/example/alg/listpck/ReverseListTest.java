@@ -9,9 +9,8 @@ import static org.junit.Assert.*;
 
 public class ReverseListTest {
     @Test
-    @Ignore
     public void reverseBetween() throws Exception {
-        final ListNode list = ListNode.createList(Arrays.asList(1, 2,  3, 4));
+        final ListNode list = ListNode.createList(Arrays.asList(1, 2,  3, 4,5));
         ReverseList r = new ReverseList();
 
         ListNode listNode = r.reverseBetween(list, 2, 4);
