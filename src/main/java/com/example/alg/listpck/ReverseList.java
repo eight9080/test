@@ -34,6 +34,34 @@ public class ReverseList {
 
         if(m==n) return head;
 
+        int position = 1;
+        ListNode current = head;
+
+        while (position<m){
+            current=current.next;
+            position++;
+        }
+
+        ListNode beforeReverseNode = current;
+
+        ListNode lastReversedNode = current.next;
+
+        ListNode l1 = current.next;
+        ListNode l2 = l1.next;
+
+        while (l1!=null && l2!=null && position<=n){
+            position++;
+            ListNode next = l2.next;
+            l2.next=l1;
+
+            l1=l2;
+            l2=next;
+        }
+
+
+
+
+
         return null;
     }
 }
