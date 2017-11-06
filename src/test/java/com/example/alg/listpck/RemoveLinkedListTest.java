@@ -8,6 +8,20 @@ import static org.junit.Assert.*;
 
 public class RemoveLinkedListTest {
     @Test
+    public void removeNthFromEnd() throws Exception {
+        final ListNode list = ListNode.createList(Arrays.asList(1, 2, 3, 4, 5));
+        final RemoveLinkedList r = new RemoveLinkedList();
+
+        final ListNode newList = r.removeNthFromEnd(list, 2);
+
+        final ListNode expectedList = ListNode.createList(
+                Arrays.asList(1, 2, 3, 5));
+
+        assertEquals(expectedList, newList);
+
+    }
+
+    @Test
     public void removeElements() throws Exception {
 
         final ListNode list = ListNode.createList(Arrays.asList(1, 2, 6, 3, 4, 5, 6));
