@@ -35,6 +35,21 @@ public class RemoveLinkedList {
     }
 
     /**
+     * Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
+
+     Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4 after calling your function.
+
+     */
+    public void deleteNode(ListNode node) {
+        if(node==null || node.next==null){
+            return;
+        }
+        node.val = node.next.val;
+        node.next = node.next.next;
+
+    }
+
+    /**
      * Given a linked list, remove the nth node from the end of list and return its head.
 
      For example, given linked list 1->2->3->4->5 and n = 2, the result is 1->2->3->5.

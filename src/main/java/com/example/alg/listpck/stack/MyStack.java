@@ -5,46 +5,55 @@ import java.util.Queue;
 
 /**
  * Implement the following operations of a stack using queues.
-
- push(x) -- Push element x onto stack.
- pop() -- Removes the element on top of the stack.
- top() -- Get the top element.
- empty() -- Return whether the stack is empty.
+ * <p>
+ * push(x) -- Push element x onto stack.
+ * pop() -- Removes the element on top of the stack.
+ * top() -- Get the top element.
+ * empty() -- Return whether the stack is empty.
  */
 public class MyStack {
 
-    private Queue queue;
+    private Queue<Integer> queue;
 
 
-
-    /** Initialize your data structure here. */
+    /**
+     * Initialize your data structure here.
+     */
     public MyStack() {
-
+        queue = new LinkedList<>();
     }
 
-    /** Push element x onto stack. */
+    /**
+     * Push element x onto stack.
+     */
     public void push(int x) {
-        Queue q = new LinkedList();     // could be any queue type, see note above
-        q.add(x);
-        q.add(queue);
-        queue = q;
+        queue.add(x);
+
+        for(int i = 0; i< queue.size()-1; i++){
+            queue.add(queue.poll());
+        }
 
     }
 
-    /** Removes the element on top of the stack and returns that element. */
+    /**
+     * Removes the element on top of the stack and returns that element.
+     */
     public int pop() {
-            return 0;
+        return queue.poll();
     }
 
-    /** Get the top element. */
+    /**
+     * Get the top element.
+     */
     public int top() {
-        return 0;
+        return this.queue.peek();
     }
 
-    /** Returns whether the stack is empty. */
+    /**
+     * Returns whether the stack is empty.
+     */
     public boolean empty() {
-
-        return false;
+        return queue.isEmpty();
 
     }
 }
