@@ -99,6 +99,58 @@ public class ReverseList {
      For k = 3, you should return: 3->2->1->4->5
      */
     public ListNode reverseKGroup(ListNode head, int k) {
-        return null;
+
+
+        if(head==null){
+            return head;
+        }
+
+        ListNode headResult = new ListNode(0);
+        ListNode currentResult = headResult;
+
+
+        int countGroup = 0;
+        ListNode firstNode = head;
+
+        ListNode p1 = head;
+
+        while (p1!=null){
+            countGroup++;
+            ListNode next = p1.next;
+            if(countGroup==k){
+
+                ListNode lastNode = p1;
+                lastNode.next=null;
+
+                ListNode l1 = firstNode;
+                ListNode l2 = firstNode.next;
+                firstNode.next=null;
+                while (l2!=null){
+                    ListNode nextR = l2.next;
+                    l2.next = l1;
+                    l1 = l2;
+                    l2 = nextR;
+                }
+
+                currentResult.next = l1;
+                currentResult=firstNode;
+                firstNode = next;
+                countGroup=0;
+            }
+
+
+            p1 = next;
+
+
+        }
+
+
+        if(firstNode!=null){
+
+            currentResult.next = firstNode;
+        }
+
+
+        return headResult.next;
     }
 }

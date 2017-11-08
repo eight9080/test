@@ -26,6 +26,22 @@ public class ListNode {
         return fakeHead.next;
     }
 
+    public static String toStringList(ListNode head){
+        ListNode temp = head;
+        if(temp==null){
+            return "";
+        }
+        StringBuilder text = new StringBuilder();
+        text.append(temp.val);
+
+        while(temp.next!=null){
+            text.append("->").append(temp.next.val);
+            temp = temp.next;
+        }
+        return text.toString();
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
