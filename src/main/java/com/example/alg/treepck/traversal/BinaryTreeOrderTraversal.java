@@ -55,4 +55,50 @@ public class BinaryTreeOrderTraversal {
         return result;
     }
 
+    /**
+     * Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
+
+     For example:
+     Given binary tree [3,9,20,null,null,15,7],
+     3
+     / \
+     9  20
+     /  \
+     15   7
+     return its bottom-up level order traversal as:
+     [
+     [15,7],
+     [9,20],
+     [3]
+     ]
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+
+        if(root==null){
+            return Collections.emptyList();
+        }
+        List<List<Integer>> result = new ArrayList<>();
+        Deque<TreeNode> qLevel = new ArrayDeque<>();
+        qLevel.offer(root);
+
+
+        while (!qLevel.isEmpty()){
+            int noElems =  qLevel.size();
+
+            List<Integer> levelElems = new ArrayList<>();
+            for(int i = 0; i< noElems; i++){
+                TreeNode node = qLevel.poll();
+                if(node.left!=null){
+                    qLevel.offer(node.left);
+                }
+                if(node.right!=null){
+                    qLevel.offer(node.right);
+                }
+                levelElems.add(node.val);
+            }
+            result.add(0, levelElems);
+        }
+        return result;
+    }
+
 }
