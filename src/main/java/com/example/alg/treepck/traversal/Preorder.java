@@ -53,4 +53,11 @@ public class Preorder {
         return result;
 
     }
+
+    public static String print(TreeNode root){
+        Preorder preorder = new Preorder();
+        List<Integer> nodes = preorder.preorderTraversal(root);
+        return nodes.toString();
+
+    }
 }

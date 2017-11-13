@@ -3,6 +3,7 @@ package com.example.alg.treepck.traversal;
 import com.example.alg.treepck.TreeNode;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BinaryTreeOrderTraversal {
 
@@ -100,5 +101,15 @@ public class BinaryTreeOrderTraversal {
         }
         return result;
     }
+
+    public static String print(TreeNode root){
+
+        BinaryTreeOrderTraversal b = new BinaryTreeOrderTraversal();
+        List<List<Integer>> lists = b.levelOrder(root);
+        return lists.stream().flatMap(Collection::stream)
+                .map(Object::toString)
+                .collect(Collectors.joining(", ", "[", "]"));
+    }
+
 
 }
