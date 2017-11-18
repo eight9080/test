@@ -11,7 +11,6 @@ public class TreeInorderPostorderTest {
     @Test
     public void buildTree() throws Exception {
 
-
         TreeInorderPostorder t = new TreeInorderPostorder();
         TreeNode treeNode = t.buildTree(new int[]{4, 2, 5, 1, 6, 7, 3, 8},
                 new int[]{4, 5, 2, 6, 7, 8, 3, 1});
