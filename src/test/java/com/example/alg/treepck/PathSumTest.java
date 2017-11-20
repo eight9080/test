@@ -10,6 +10,20 @@ import static org.junit.Assert.*;
 
 public class PathSumTest {
     @Test
+    public void maxPathSum() throws Exception {
+
+        TreeNode root = new TreeNode(1);
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(3);
+        root.left=node1;
+        root.right=node2;
+
+        final PathSum p = new PathSum();
+        final int maxPathSum = p.maxPathSum(root);
+        assertEquals(6, maxPathSum);
+    }
+
+    @Test
     public void pathSum() throws Exception {
         TreeNode root = new TreeNode(5);
         TreeNode node1 = new TreeNode(4);
