@@ -25,7 +25,6 @@ public class LowestCommonAncestor {
             return null;
         }
 
-        //TreeNode node = root;
         final int val = root.val;
         if(p.val< val && val < q.val ){
             return new TreeNode(val);
