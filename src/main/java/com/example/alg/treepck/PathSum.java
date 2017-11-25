@@ -142,4 +142,47 @@ public class PathSum {
         return currentMax;
     }
 
+
+    /**
+     * Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number. Find the total sum of all root-to-leaf numbers.
+
+     For example,
+
+     1
+     / \
+     2   3
+     The root-to-leaf path 1->2 represents the number 12.
+     The root-to-leaf path 1->3 represents the number 13.
+     Return the sum = 12 + 13 = 25.
+     */
+    public int sumNumbers(TreeNode root) {
+
+        if(root==null){
+            return  0;
+        }
+
+        return dfsSum(root, 0, 0);
+
+    }
+
+    private int dfsSum(TreeNode node, int number, int sum) {
+        if(node==null){
+            return 0;
+        }
+
+        //add current number
+        number = number*10 + node.val;
+
+        //leaf number
+        if(node.left==null && node.right==null){
+            sum += number;
+            return sum;
+        }
+
+        final int leftSum = dfsSum(node.left, number, sum);
+        final int rightSum = dfsSum(node.right, number, sum);
+
+        return leftSum+rightSum;
+    }
+
 }
