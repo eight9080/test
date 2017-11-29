@@ -2,9 +2,25 @@ package com.example.alg.listpck;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class MergeSortedListsTest {
+    @Test
+    public void mergeKLists() throws Exception {
+
+        final MergeSortedLists m = new MergeSortedLists();
+        final ListNode list1 = ListNode.createList(Arrays.asList(0, 4, 7, 9));
+        final ListNode list2 = ListNode.createList(Arrays.asList(1, 2, 3, 8));
+        final ListNode result = m.mergeKLists(new ListNode[]{list1, list2});
+
+        final ListNode expect = ListNode.createList(Arrays.asList(0, 1, 2, 3, 4, 7, 8, 9));
+
+        assertEquals(expect, result);
+
+    }
+
     @Test
     public void mergeTwoLists() throws Exception {
         final ListNode l7 = new ListNode(15);
