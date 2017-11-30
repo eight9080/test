@@ -1,5 +1,7 @@
 package com.example.alg.arraypkg;
 
+import com.example.alg.model.Interval;
+
 import java.util.*;
 
 public class IntervalsOps {
@@ -51,13 +53,13 @@ public class IntervalsOps {
         ArrayList<Interval> result = new ArrayList<>();
 
         for(Interval interval: intervals){
-            if(interval.end < newInterval.start){
+            if(interval.getEnd() < newInterval.getStart()){
                 result.add(interval);
-            }else if(interval.start > newInterval.end){
+            }else if(interval.getStart() > newInterval.getEnd()){
                 result.add(newInterval);
                 newInterval = interval;
-            }else if(interval.end >= newInterval.start || interval.start <= newInterval.end){
-                newInterval = new Interval(Math.min(interval.start, newInterval.start), Math.max(newInterval.end, interval.end));
+            }else if(interval.getEnd() >= newInterval.getStart() || interval.getStart() <= newInterval.getEnd()){
+                newInterval = new Interval(Math.min(interval.getStart(), newInterval.getStart()), Math.max(newInterval.getEnd(), interval.getEnd()));
             }
         }
 
@@ -70,43 +72,4 @@ public class IntervalsOps {
         return new Interval(start, end);
     }
 
-    public static class Interval{
-        private int start;
-        private int end;
-
-        public Interval(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
-
-        public int getStart() {
-            return start;
-        }
-
-        public int getEnd() {
-            return end;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Interval interval = (Interval) o;
-            return start == interval.start &&
-                    end == interval.end;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(start, end);
-        }
-
-        @Override
-        public String toString() {
-            return "Interval{" +
-                    "start=" + start +
-                    ", end=" + end +
-                    '}';
-        }
-    }
 }
