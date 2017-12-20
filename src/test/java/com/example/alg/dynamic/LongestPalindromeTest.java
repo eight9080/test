@@ -5,6 +5,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LongestPalindromeTest {
+
+    final LongestPalindrome l = new LongestPalindrome();
+
+    @Test
+    public void longestPalindromicSubstringLinear() throws Exception {
+        assertEquals(3, l.longestPalindromicSubstringLinear("babad"));
+    }
+
     @Test
     public void longestPalindrome() throws Exception {
 
