@@ -94,7 +94,6 @@ public class WordBreak {
         dfs(pos, result, "", s.length());
         return result;
 
-
     }
 
     private void dfs(ArrayList<String>[] pos, ArrayList<String> result, String phrase, int length) {
