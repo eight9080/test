@@ -1,6 +1,7 @@
 package com.example.alg.dynamic;
 
 import com.example.alg.treepck.TreeNode;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
