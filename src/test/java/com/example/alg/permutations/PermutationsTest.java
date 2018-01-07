@@ -13,6 +13,18 @@ import static org.junit.Assert.*;
 
 public class PermutationsTest {
     @Test
+    public void permuteUnique() throws Exception {
+        final Permutations p = new Permutations();
+
+        final List<List<Integer>> lists = p.permuteUnique(new int[]{1, 1, 2});
+
+        assertThat(lists, containsInAnyOrder(
+                asList(1, 1, 2),
+                asList(1, 2, 1),
+                asList(2, 1, 1)));
+    }
+
+    @Test
     public void permute() throws Exception {
 
         final Permutations p = new Permutations();
