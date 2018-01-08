@@ -13,6 +13,12 @@ import static org.junit.Assert.*;
 
 public class PermutationsTest {
     @Test
+    public void getPermutation() throws Exception {
+        final Permutations p = new Permutations();
+        assertEquals("132", p.getPermutation(3, 2));
+    }
+
+    @Test
     public void permuteUnique() throws Exception {
         final Permutations p = new Permutations();
 
