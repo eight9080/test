@@ -10,8 +10,19 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.*;
 
 public class CombinationSumTest {
-
     final CombinationSum c = new CombinationSum();
+
+    @Test
+    public void combinationSum3() throws Exception {
+
+        final List<List<Integer>> lists1 = c.combinationSum3(3, 7);
+        assertThat(lists1, containsInAnyOrder(
+                asList(1,2,4)));
+
+        final List<List<Integer>> lists2 = c.combinationSum3(3, 9);
+        assertThat(lists2, containsInAnyOrder(
+                asList(1,2,6), asList(1,3,5), asList(2,3,4)));
+    }
 
     @Test
     public void combinationSum2() throws Exception {

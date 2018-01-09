@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CombinationSum {
 
@@ -111,4 +113,61 @@ public class CombinationSum {
         }
 
     }
+
+    /**
+     * Find all possible combinations of k numbers that add up to a number n,
+     * given that only numbers from 1 to 9 can be used and each combination should be a unique
+     * set of numbers.
+
+
+     Example 1:
+
+     Input: k = 3, n = 7
+
+     Output:
+
+     [[1,2,4]]
+
+     Example 2:
+
+     Input: k = 3, n = 9
+
+     Output:
+
+     [[1,2,6], [1,3,5], [2,3,4]]
+     */
+    public List<List<Integer>> combinationSum3(int k, int n) {
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        final List<Integer> numbers = IntStream.rangeClosed(1, 9).boxed().collect(Collectors.toList());
+
+        helperCombSum3(numbers, n, k, 0, new ArrayList<>(), res);
+
+        return res;
+    }
+
+    private void helperCombSum3(List<Integer> candidates, int target, int maxNumbers, int index,
+                                List<Integer> current, List<List<Integer>> res) {
+        if (target < 0 || current.size() > maxNumbers) {
+            return;
+        }
+        if (target == 0 && current.size()==maxNumbers) {
+            res.add(new ArrayList<>(current));
+            return;
+        }
+
+        for (int i = index; i < candidates.size(); i++) {
+
+            if (target < candidates.get(i))
+                return;
+
+            if (i > index && candidates.get(i - 1).equals(candidates.get(i))) continue;
+
+            current.add(candidates.get(i));
+            helperCombSum3(candidates, target - candidates.get(i), maxNumbers, i + 1, current, res);
+            current.remove(current.size() - 1);
+        }
+    }
+
 }
