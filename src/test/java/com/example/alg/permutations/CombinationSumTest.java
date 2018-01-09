@@ -11,10 +11,21 @@ import static org.junit.Assert.*;
 
 public class CombinationSumTest {
 
+    final CombinationSum c = new CombinationSum();
+
+    @Test
+    public void combinationSum2() throws Exception {
+        final List<List<Integer>> lists = c.combinationSum2(new int[]{10, 1, 2, 7, 6, 1, 5}, 8);
+        assertThat(lists, containsInAnyOrder(
+                asList(1,7),
+                asList(1,2,5),
+                asList(2,6),
+                asList(1,1,6)));
+    }
+
     @Test
     public void combinationSum() throws Exception {
 
-        final CombinationSum c = new CombinationSum();
         final List<List<Integer>> lists = c.combinationSum(new int[]{2, 3, 6, 7}, 7);
         final List<List<Integer>> expect = Arrays.asList(Arrays.asList(7), Arrays.asList(2, 2, 3));
 
