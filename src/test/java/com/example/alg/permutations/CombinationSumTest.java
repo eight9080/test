@@ -13,6 +13,12 @@ public class CombinationSumTest {
     final CombinationSum c = new CombinationSum();
 
     @Test
+    public void combinationSum4() throws Exception {
+        assertEquals(7, c.combinationSum4(new int[]{1,2,3}, 4));
+    }
+
+
+    @Test
     public void combinationSum3() throws Exception {
 
         final List<List<Integer>> lists1 = c.combinationSum3(3, 7);
@@ -38,7 +44,6 @@ public class CombinationSumTest {
     public void combinationSum() throws Exception {
 
         final List<List<Integer>> lists = c.combinationSum(new int[]{2, 3, 6, 7}, 7);
-        final List<List<Integer>> expect = Arrays.asList(Arrays.asList(7), Arrays.asList(2, 2, 3));
 
         assertThat(lists, containsInAnyOrder(
                 asList(2,2,3),
