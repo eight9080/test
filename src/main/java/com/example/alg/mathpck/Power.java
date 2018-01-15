@@ -43,6 +43,30 @@ public class Power {
      * Given an integer, write a function to determine if it is a power of two.
      */
     public boolean isPowerOfTwo(int n) {
-return true;
+        if(n==0) return false;
+        while(n%2==0) {
+            n/=2;
+        }
+        return (n==1);
+    }
+
+    /**
+     * Given an integer, write a function to determine if it is a power of three.
+     */
+    public boolean isPowerOfThree(int n) {
+
+        if(n==0) return false;
+        while(n%3==0) {
+            n/=3;
+        }
+        return (n==1);
+
+    }
+
+    public boolean isPowerOfFour(int num) {
+        if(num==0) return false;
+
+        int pow = (int) (Math.log(num) / Math.log(4));
+        return num == Math.pow(4, pow);
     }
 }
