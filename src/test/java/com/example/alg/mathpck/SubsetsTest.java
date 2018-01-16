@@ -11,10 +11,26 @@ import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 public class SubsetsTest {
+    final Subsets s = new Subsets();
+
+    @Test
+    public void subsetsWithDup() throws Exception {
+        final List<List<Integer>> subsets = s.subsetsWithDup(new int[]{1, 2, 2});
+
+        assertThat(subsets, Matchers.containsInAnyOrder(
+                asList(2),
+                asList(1),
+                asList(1,2,2),
+                asList(2,2),
+                asList(1,2),
+                Collections.emptyList()
+        ));
+
+    }
+
     @Test
     public void subsets() throws Exception {
 
-        final Subsets s = new Subsets();
         final List<List<Integer>> subsets = s.subsets(new int[]{1, 2, 3});
 
         assertThat(subsets, Matchers.containsInAnyOrder(
