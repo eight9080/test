@@ -8,6 +8,7 @@ public class IntegerToEnglishTest {
     @Test
     public void numberToWordsLess100() throws Exception {
         final IntegerToEnglish toEnglish = new IntegerToEnglish();
+        assertEquals("One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven", toEnglish.numberToWords(1234567));
         assertEquals("Twelve", toEnglish.numberToWords(12));
         assertEquals("Forty Five", toEnglish.numberToWords(45));
 

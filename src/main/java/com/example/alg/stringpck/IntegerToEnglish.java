@@ -1,6 +1,7 @@
 package com.example.alg.stringpck;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class IntegerToEnglish {
@@ -15,7 +16,7 @@ public class IntegerToEnglish {
      */
 
     private HashMap<Integer, String> map = new HashMap<>();
-    private HashMap<Integer, String> mapExtra = new HashMap<>();
+    private HashMap<Integer, String> mapExtra = new LinkedHashMap<>();
 
     public IntegerToEnglish() {
         this.fillMap();
