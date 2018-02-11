@@ -11,6 +11,13 @@ import static org.junit.Assert.*;
 
 public class SumNumbersTest {
     @Test
+    public void subarraySum() throws Exception {
+        final SumNumbers s = new SumNumbers();
+        assertEquals(2, s.subarraySum(new int[]{1,1,1}, 2));
+        assertEquals(2, s.subarraySum(new int[]{1,2,3}, 3));
+    }
+
+    @Test
     public void threeSumClosest() throws Exception {
         final SumNumbers s = new SumNumbers();
         assertEquals(2, s.threeSumClosest(new int[]{-1,2,1,-4}, 1));
