@@ -6,6 +6,15 @@ import static org.junit.Assert.*;
 
 public class SearchArrayTest {
     @Test
+    public void firstMissingPositive() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(2, sA.firstMissingPositive(new int[]{4,1,3,3}));
+        assertEquals(2, sA.firstMissingPositive(new int[]{3,4,-1,1}));
+        assertEquals(3, sA.firstMissingPositive(new int[]{1,2,0}));
+
+    }
+
+    @Test
     public void findMinDuplicates() throws Exception {
         final SearchArray sA = new SearchArray();
         assertEquals(1, sA.findMinDuplicates(new int[]{10,1,10,10,10}));
