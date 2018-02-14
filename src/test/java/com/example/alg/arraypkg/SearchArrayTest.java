@@ -6,6 +6,13 @@ import static org.junit.Assert.*;
 
 public class SearchArrayTest {
     @Test
+    public void minSwapsCouples() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(1, sA.minSwapsCouples(new int[]{0,2,1,3}));
+        assertEquals(0, sA.minSwapsCouples(new int[]{3,2,0,1}));
+    }
+
+    @Test
     public void missingNumber() throws Exception {
         final SearchArray sA = new SearchArray();
         assertEquals(2, sA.missingNumber(new int[]{3,0,1}));

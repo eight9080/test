@@ -375,4 +375,48 @@ public class SearchArray {
         return nums.length;
     }
 
+
+    /**
+     * Couples Holding Hands
+     * N couples sit in 2N seats arranged in a row and want to hold hands. We want to know the minimum number of swaps so that every couple is sitting side by side. A swap consists of choosing any two people, then they stand up and switch seats.
+
+     The people and seats are represented by an integer from 0 to 2N-1, the couples are numbered in order, the first couple being (0, 1), the second couple being (2, 3), and so on with the last couple being (2N-2, 2N-1).
+
+     The couples' initial seating is given by row[i] being the value of the person who is initially sitting in the i-th seat.
+
+     Example 1:
+
+     Input: row = [0, 2, 1, 3]
+     Output: 1
+     Explanation: We only need to swap the second (row[1]) and third (row[2]) person.
+     Example 2:
+
+     Input: row = [3, 2, 0, 1]
+     Output: 0
+     Explanation: All couples are already seated side by side.
+     */
+    public int minSwapsCouples(int[] row) {
+        int swaps = 0;
+
+        int[] pos = new int[row.length];
+        for (int i = 0; i < row.length; i++) {
+            pos[row[i]] = i;
+        }
+
+        for (int i = 0; i < row.length; i += 2) {
+            int j = row[i] % 2 == 0 ? row[i] + 1 : row[i] - 1;
+            if (row[i + 1] != j) {
+                swap(row, pos, i + 1, pos[j]);
+                swaps++;
+            }
+        }
+        return swaps;
+    }
+    private void swap(int[] row, int[] pos, int x, int y) {
+        int temp = row[x];
+        pos[temp] = y;
+        pos[row[y]] = x;
+        row[x] = row[y];
+        row[y] = temp;
+    }
 }
