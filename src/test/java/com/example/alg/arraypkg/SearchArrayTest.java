@@ -6,6 +6,13 @@ import static org.junit.Assert.*;
 
 public class SearchArrayTest {
     @Test
+    public void missingNumber() throws Exception {
+        final SearchArray sA = new SearchArray();
+        assertEquals(2, sA.missingNumber(new int[]{3,0,1}));
+        assertEquals(8, sA.missingNumber(new int[]{9,6,4,2,3,5,7,0,1}));
+    }
+
+    @Test
     public void firstMissingPositive() throws Exception {
         final SearchArray sA = new SearchArray();
         assertEquals(2, sA.firstMissingPositive(new int[]{4,1,3,3}));
