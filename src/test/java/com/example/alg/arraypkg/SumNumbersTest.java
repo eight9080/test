@@ -11,6 +11,18 @@ import static org.junit.Assert.*;
 
 public class SumNumbersTest {
     @Test
+    public void fourSum() throws Exception {
+        final SumNumbers s = new SumNumbers();
+        final List<List<Integer>> result = s.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+
+        assertThat(result, Matchers.containsInAnyOrder(
+                    asList(-1,  0, 0, 1),
+                    asList(-2, -1, 1, 2),
+                    asList(-2,  0, 0, 2)
+                ));
+    }
+
+    @Test
     public void checkSubarraySum() throws Exception {
         final SumNumbers s = new SumNumbers();
         assertTrue(s.checkSubarraySum(new int[]{23,2,4,6,7}, 6));
