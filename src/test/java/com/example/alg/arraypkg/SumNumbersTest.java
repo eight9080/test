@@ -11,6 +11,13 @@ import static org.junit.Assert.*;
 
 public class SumNumbersTest {
     @Test
+    public void fourSumCount() throws Exception {
+        final SumNumbers s = new SumNumbers();
+        assertEquals(2, s.fourSumCount(new int[]{1,2}, new int[]{-2,-1},
+                new int[]{-1,2}, new int[]{0,2}));
+    }
+
+    @Test
     public void fourSum() throws Exception {
         final SumNumbers s = new SumNumbers();
         final List<List<Integer>> result = s.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
