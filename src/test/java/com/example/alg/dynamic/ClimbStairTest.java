@@ -14,4 +14,13 @@ public class ClimbStairTest {
         assertEquals(3, c.climbStairs(3));
 
     }
+
+    @Test
+    public void minCostClimbingStairs() {
+
+        final ClimbStair c = new ClimbStair();
+        assertEquals(15, c.minCostClimbingStairs(new int[]{10,15,20}));
+        assertEquals(6, c.minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}));
+
+    }
 }
