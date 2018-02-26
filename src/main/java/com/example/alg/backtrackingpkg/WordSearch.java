@@ -69,4 +69,8 @@ public class WordSearch {
         visited[i][j]=false;
         return false;
     }
+
+    public static Double multiply(Double a, Double b) {
+        return a * b;
+    }
 }
