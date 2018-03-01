@@ -21,28 +21,32 @@ public class ArrayCropped {
      {1,1,1}
      */
     public static int[][] getCroppedFieldAsArray(int[][] src) {
-        int topRow = 0;
-        int leftColumn = 0;
-        int rightColumn = 0;
-        int bottomRow = 0;
+        int topRow = -1;
+        int leftColumn = -1;
+        int rightColumn = -1;
+        int bottomRow = -1;
 
 
         for (int i = 0; i < src.length; i++) {
             for (int j = 0; j < src[0].length; j++) {
                 if(src[i][j]==1){
-                        topRow = Math.min(topRow, i);
-                        leftColumn = Math.min(leftColumn, j);
+                        topRow = topRow!=-1? Math.min(topRow, i): i;
+                        leftColumn = leftColumn!=-1 ? Math.min(leftColumn, j): j;
                         rightColumn = Math.max(rightColumn, j);
                         bottomRow = Math.max(bottomRow, i);
                 }
             }
         }
 
-        int[][] result = new int[bottomRow+1][rightColumn+1];
+        if(topRow==-1 || leftColumn==-1 || rightColumn==-1 || bottomRow==-1){
+            return new int[0][0] ;
+        }
+
+        int[][] result = new int[bottomRow-topRow+1][rightColumn-leftColumn+1];
         int resultRow = 0;
-        for (int i = topRow; i < bottomRow+1; i++) {
+        for (int i = topRow; i <= bottomRow; i++) {
             int resultColumn=0;
-            for (int j = leftColumn; j < rightColumn+1; j++) {
+            for (int j = leftColumn; j <= rightColumn; j++) {
                 result[resultRow][resultColumn] = src[i][j];
                 resultColumn++;
             }
