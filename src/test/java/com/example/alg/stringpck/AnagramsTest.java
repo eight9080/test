@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class AnagramsTest {
     @Test
-    public void groupAnagrams() throws Exception {
+    public void groupAnagrams() {
         final Anagrams a = new Anagrams();
         final List<List<String>> expected = asList(asList("ate", "eat", "tea"), asList("nat", "tan"), asList("bat"));
         final List<List<String>> lists = a.groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"});
@@ -18,4 +18,11 @@ public class AnagramsTest {
 
     }
 
+    @Test
+    public void isAnagram() {
+
+        final Anagrams a = new Anagrams();
+        assertTrue(a.isAnagram("anagram", "nagaram"));
+        assertFalse(a.isAnagram("rat", "car"));
+    }
 }
