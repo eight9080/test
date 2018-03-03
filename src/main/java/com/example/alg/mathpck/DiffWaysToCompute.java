@@ -1,0 +1,68 @@
+package com.example.alg.mathpck;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
+
+
+ Example 1
+ Input: "2-1-1".
+
+ ((2-1)-1) = 0
+ (2-(1-1)) = 2
+ Output: [0, 2]
+
+
+ Example 2
+ Input: "2*3-4*5"
+
+ (2*(3-(4*5))) = -34
+ ((2*3)-(4*5)) = -14
+ ((2*(3-4))*5) = -10
+ (2*((3-4)*5)) = -10
+ (((2*3)-4)*5) = 10
+ Output: [-34, -14, -10, -10, 10]
+ */
+public class DiffWaysToCompute {
+
+    public List<Integer> diffWaysToCompute(String input) {
+
+        if(input==null || input.isEmpty()){
+            return Collections.emptyList();
+        }
+
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            final char c = input.charAt(i);
+            if(isOperator(c)){
+                final String firstPart = input.substring(0, i);
+                final String secondPart = input.substring(i+1);
+
+                final List<Integer> resultsFirst = diffWaysToCompute(firstPart);
+                final List<Integer> resultsSecond = diffWaysToCompute(secondPart);
+
+                for (Integer f: resultsFirst) {
+                    for (Integer s: resultsSecond) {
+                        switch (c){
+                            case '+':  result.add(f+s); break;
+                            case '-':  result.add(f-s); break;
+                            case '*':  result.add(f*s); break;
+                        }
+                    }
+                }
+            }
+        }
+        if(result.isEmpty()){
+            result.add(Integer.valueOf(input));
+        }
+        return result;
+    }
+
+    private boolean isOperator(char c){
+        return c=='+' || c=='-' || c=='*';
+    }
+}
