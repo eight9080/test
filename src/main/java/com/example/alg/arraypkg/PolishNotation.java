@@ -22,10 +22,10 @@ public class PolishNotation {
         OPERATIONS.put("+", (a, b) -> a + b);
         OPERATIONS.put("-", (a, b) -> a - b);
         OPERATIONS.put("*", (a, b) -> a * b);
-        OPERATIONS.put("/", (a, b) -> b / a);
+        OPERATIONS.put("/", (a, b) -> a / b);
     }
 
-    public static int evalRPN(String[] tokens) {
+    public  int evalRPN(String[] tokens) {
 
 
         final Deque<String> stackCalculation = new ArrayDeque<>();
@@ -37,7 +37,7 @@ public class PolishNotation {
                 int a = Integer.valueOf(stackCalculation.pop());
                 int b = Integer.valueOf(stackCalculation.pop());
                 final ToIntBiFunction<Integer, Integer> operation = OPERATIONS.get(token);
-                stackCalculation.push(String.valueOf(operation.applyAsInt(a, b)));
+                stackCalculation.push(String.valueOf(operation.applyAsInt(b,a)));
             }
         }
         if (!stackCalculation.isEmpty()) {
@@ -46,7 +46,7 @@ public class PolishNotation {
         return 0;
     }
 
-    private static boolean isOperator(String token) {
+    private  boolean isOperator(String token) {
         return OPERATORS.contains(token);
     }
 
