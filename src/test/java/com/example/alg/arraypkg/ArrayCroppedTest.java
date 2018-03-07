@@ -1,5 +1,6 @@
 package com.example.alg.arraypkg;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -40,6 +41,7 @@ public class ArrayCroppedTest {
 
 
     @Test
+    @Ignore
     public void test5() {
 
         final int size = 10;
