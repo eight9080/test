@@ -1,5 +1,9 @@
 package com.example.alg.dynamic;
 
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 public class LongestPalindrome {
     /**
      * Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
@@ -136,4 +140,46 @@ public class LongestPalindrome {
         }
         return max;
     }
+
+    /**
+     * Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
+
+     This is case sensitive, for example "Aa" is not considered a palindrome here.
+     Example:
+
+     Input:
+     "abccccdd"
+
+     Output:
+     7
+
+     Explanation:
+     One longest palindrome that can be built is "dccaccd", whose length is 7.
+     */
+    public int noLongestPalindrome(String s) {
+
+        if(s==null || s.isEmpty()){
+            return 0;
+        }
+
+        final Map<Character, Long> frequencyChar = s.chars().mapToObj(v -> (char) v).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        Long odd = 0L;
+        Long count = 0L;
+        for (Map.Entry<Character, Long> entry: frequencyChar.entrySet()) {
+            if(entry.getValue()%2==0){
+                count+=entry.getValue();
+            }else {
+                if(odd<entry.getValue()){
+                    count+=(odd==0?1:odd)-1;
+                    odd=entry.getValue();
+                }else{
+                    count+=entry.getValue()-1;
+                }
+            }
+        }
+        count+=odd;
+        return count.intValue();
+    }
+
 }

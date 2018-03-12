@@ -25,4 +25,22 @@ public class LongestPalindromeTest {
 
     }
 
+    @Test
+    public void noLongestPalindrome() {
+
+        final LongestPalindrome l = new LongestPalindrome();
+
+        assertEquals(9, l.noLongestPalindrome("bbbcccccaa"));
+
+        assertEquals(2, l.noLongestPalindrome("bb"));
+
+        String text = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth";
+        assertEquals(983, l.noLongestPalindrome(text));
+
+        assertEquals(5, l.noLongestPalindrome("bananas"));
+        assertEquals(7, l.noLongestPalindrome("aaaAaaaa"));
+        assertEquals(7, l.noLongestPalindrome("abccccdd"));
+
+
+    }
 }
