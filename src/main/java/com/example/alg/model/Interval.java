@@ -5,8 +5,8 @@ import com.example.alg.arraypkg.IntervalsOps;
 import java.util.Objects;
 
 public class Interval {
-    private int start;
-    private int end;
+    public int start;
+    public int end;
 
     public Interval(int start, int end) {
         this.start = start;

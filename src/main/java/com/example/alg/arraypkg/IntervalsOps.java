@@ -22,7 +22,9 @@ public class IntervalsOps {
             return Collections.emptyList();
         }
 
-        intervals.sort(Comparator.comparing(Interval::getStart).thenComparing(Interval::getEnd));
+//        intervals.sort(Comparator.comparing(Interval::getStart).thenComparing(Interval::getEnd));
+        intervals.sort(Comparator.comparing((Interval interval1) -> interval1.start)
+                .thenComparing(interval2 -> interval2.getEnd()));
 
         final ArrayList<Interval> resultIntervals = new ArrayList<>();
         Interval preInterval = intervals.get(0);
@@ -31,7 +33,8 @@ public class IntervalsOps {
                 resultIntervals.add(preInterval);
                 preInterval = interval;
             }else{
-                preInterval = new Interval(preInterval.getStart(), Math.max(preInterval.getEnd(), interval.getEnd()));
+                preInterval = new Interval(preInterval.getStart(),
+                        Math.max(preInterval.getEnd(), interval.getEnd()));
             }
         }
         resultIntervals.add(preInterval);

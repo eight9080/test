@@ -22,9 +22,6 @@ public class AdditiveNumber {
             return false;
         }
 
-//        if(num.startsWith("0")){
-//            return false;
-//        }
         int offset=1;
         while (offset<=num.length()/2){
             if (num.charAt(0) == '0' && offset > 1) return false;
