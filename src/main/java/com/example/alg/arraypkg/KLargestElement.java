@@ -16,10 +16,10 @@ public class KLargestElement {
         final PriorityQueue<Integer> q = new PriorityQueue<>(k);
         for (int i : nums) {
             q.offer(i);
-            System.out.println(q);
+//            System.out.println(q);
             if (q.size() > k) {
                 q.poll();
-                System.out.println(q);
+//                System.out.println(q);
             }
         }
         return q.peek();
