@@ -50,4 +50,13 @@ public class KLargestElementTest {
         assertEquals(5, kthLargest);
     }
 
+    @Test
+    public void thirdMax() {
+
+        final KLargestElement k = new KLargestElement();
+        assertEquals(1, k.thirdMax(new int[]{2,2,3,1}));
+        assertEquals(1, k.thirdMax(new int[]{3,2,1}));
+        assertEquals(2, k.thirdMax(new int[]{1,2}));
+
+    }
 }
