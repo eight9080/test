@@ -2,9 +2,6 @@ package com.example.alg.stringpck;
 
 import java.util.*;
 
-import static java.util.Arrays.asList;
-import static java.util.Arrays.sort;
-
 public class Palindrome {
 
     /**
@@ -96,14 +93,14 @@ public class Palindrome {
             if(isPalindrome(word)){
                 final Optional<Integer> pairWordIndex = findPairIndex("", i, mapIndex);
                 if(pairWordIndex.isPresent()){
-                    result.add(asList( i, pairWordIndex.get()));
-                    result.add(asList( pairWordIndex.get(), i));
+                    result.add(Arrays.asList( i, pairWordIndex.get()));
+                    result.add(Arrays.asList( pairWordIndex.get(), i));
                 }
             }
 
             final Optional<Integer> pairWordIndex = findPairIndex(word, i, mapIndex);
             if(pairWordIndex.isPresent()){
-                result.add(asList( i, pairWordIndex.get()));
+                result.add(Arrays.asList( i, pairWordIndex.get()));
             }
 
             for(int k=1; k<word.length(); k++) {
@@ -113,13 +110,13 @@ public class Palindrome {
                 if(isPalindrome(left)){
                     final Optional<Integer> pairIndex = findPairIndex(right, i, mapIndex);
                     if(pairIndex.isPresent()){
-                        result.add(asList( pairIndex.get(), i));
+                        result.add(Arrays.asList( pairIndex.get(), i));
                     }
                 }
                 if(isPalindrome(right)){
                     final Optional<Integer> pairIndex = findPairIndex(left, i, mapIndex);
                     if(pairIndex.isPresent()){
-                        result.add(asList( i, pairIndex.get()));
+                        result.add(Arrays.asList( i, pairIndex.get()));
                     }
                 }
 
