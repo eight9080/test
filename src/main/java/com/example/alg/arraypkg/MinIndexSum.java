@@ -30,7 +30,7 @@ public class MinIndexSum {
         Map<String, Integer> restaurantsByIds = new HashMap<>();
 
         for (int i = 0; i < list1.length; i++) {
-            restaurantsByIds.put(list1[i], i);
+            restaurantsByIds.put(list1[i], -i);
         }
 
         int min = list1.length+list2.length+1;
@@ -38,7 +38,7 @@ public class MinIndexSum {
         for (int i = 0; i < list2.length; i++) {
             final String restaurant = list2[i];
             if(restaurantsByIds.containsKey(restaurant)){
-                final int sumIndex = restaurantsByIds.get(restaurant) + i;
+                final int sumIndex = restaurantsByIds.get(restaurant)*-1 + i;
                 min = Math.min(min, sumIndex);
                 restaurantsByIds.put(restaurant, sumIndex);
             }
@@ -47,7 +47,7 @@ public class MinIndexSum {
         int finalMin = min;
         final String[] result = restaurantsByIds.entrySet().stream()
                 .filter(m -> m.getValue() == finalMin)
-                .map(m -> m.getKey())
+                .map(Map.Entry::getKey)
                 .toArray(String[]::new);
 
 
