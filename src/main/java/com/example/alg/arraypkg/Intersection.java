@@ -1,9 +1,7 @@
 package com.example.alg.arraypkg;
 
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Intersection {
 
@@ -48,5 +46,34 @@ public class Intersection {
             }
         }
         return result.toArray(new Integer[result.size()]);
+    }
+
+    /**
+     * Given two arrays, write a function to compute their intersection.
+
+     Example:
+     Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].
+     *
+     */
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        List<Integer> result = new ArrayList<>();
+        int indexNum1 = 0;
+        int indexNum2 = 0;
+
+        while(indexNum1 < nums1.length && indexNum2<nums2.length){
+            if(nums1[indexNum1]==nums2[indexNum2]){
+                result.add(nums1[indexNum1]);
+                indexNum1++;
+                indexNum2++;
+            }else if(nums1[indexNum1]<nums2[indexNum2]){
+                indexNum1++;
+            }else{
+                indexNum2++;
+            }
+        }
+        return result.stream().mapToInt(i->(int)i).toArray();
     }
 }

@@ -22,6 +22,7 @@ public class BestBuyStockTest {
 
     @Test
     public void maxProfit2() throws Exception {
+//        assertEquals(3, b.maxProfit2(new int[]{1,2,3,0,2}));
         assertEquals(1, b.maxProfit2(new int[]{1,2}));
         assertEquals(7, b.maxProfit2(new int[]{7, 1, 5, 3, 6, 4}));
         assertEquals(10, b.maxProfit2(new int[]{7, 1, 5, 8, 3, 6, 4}));
@@ -31,9 +32,11 @@ public class BestBuyStockTest {
 
     @Test
     public void maxProfit() throws Exception {
+
         assertEquals(2, b.maxProfit(new int[]{2,4,1}));
         assertEquals(5, b.maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
         assertEquals(0, b.maxProfit(new int[]{7, 6, 4, 3, 1}));
+
     }
 
 }

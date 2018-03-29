@@ -19,4 +19,10 @@ public class IntersectionTest {
         assertArrayEquals(new Integer[]{0,1, 4}, result);
     }
 
+    @Test
+    public void intersect() {
+        final Intersection i = new Intersection();
+        assertArrayEquals(new int[]{2,2},
+                i.intersect(new int[]{1,2,2,1}, new int[]{2,2}));
+    }
 }
