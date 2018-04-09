@@ -47,4 +47,22 @@ public class PermutationsTest {
                 asList(3, 2, 1)));
     }
 
+    @Test
+    public void permuteBackTracking() throws Exception {
+
+        final Permutations p = new Permutations();
+
+
+        final List<List<Integer>> lists = p.permuteBackTracking(new int[]{1, 2, 3});
+
+
+        assertThat(lists, containsInAnyOrder(asList(1, 2, 3),
+                asList(1, 3, 2),
+                asList(2, 1, 3),
+                asList(2, 3, 1),
+                asList(3, 1, 2),
+                asList(3, 2, 1)));
+    }
+
+
 }

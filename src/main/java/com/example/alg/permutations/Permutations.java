@@ -40,6 +40,32 @@ public class Permutations {
         return res;
     }
 
+
+    public List<List<Integer>> permuteBackTracking(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        // Arrays.sort(nums); // not necessary
+        backtrackPermute(list, new ArrayList<>(), nums);
+        return list;
+    }
+
+    private void backtrackPermute(List<List<Integer>> list, List<Integer> tempList, int[] nums) {
+
+        if(tempList.size()==nums.length){
+            list.add(new ArrayList<>(tempList));
+            return;
+        }
+
+        for (int num : nums) {
+            if(tempList.contains(num)){
+                continue;
+            }
+            tempList.add(num);
+            backtrackPermute(list, tempList, nums);
+            tempList.remove(tempList.size()-1);
+        }
+
+    }
+
     /**
      * Given a collection of numbers that might contain duplicates, return all possible unique permutations.
      * <p>

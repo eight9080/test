@@ -14,7 +14,8 @@ public class SortListTest {
     public void insertionSortList() {
 
         final SortList s = new SortList();
-        final ListNode listNode = s.insertionSortList(ListNode.createList(Arrays.asList(4, 1, 3, 8, 9, 2)));
+        final ListNode listNode = s.insertionSortList(ListNode.createList(
+                Arrays.asList(4, 1, 3, 8, 9, 2)));
         final List<Integer> expected = Arrays.asList(1, 2, 3, 4, 8, 9);
         assertEquals(ListNode.createList(expected), listNode);
 
