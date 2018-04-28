@@ -27,4 +27,24 @@ public class ValidStringTest {
 
     }
 
+    @Test
+    public void detectCapitalUse() {
+
+        final ValidString v = new ValidString();
+        assertFalse(v.detectCapitalUse("FFFf"));
+        assertTrue(v.detectCapitalUse("USA"));
+        assertTrue(v.detectCapitalUse("leeet"));
+        assertFalse(v.detectCapitalUse("FlaG"));
+    }
+
+    @Test
+    public void detectCapitalUseReg() {
+
+
+        final ValidString v = new ValidString();
+        assertFalse(v.detectCapitalUseReg("FFFf"));
+        assertTrue(v.detectCapitalUseReg("USA"));
+        assertTrue(v.detectCapitalUseReg("leeet"));
+        assertFalse(v.detectCapitalUseReg("FlaG"));
+    }
 }
