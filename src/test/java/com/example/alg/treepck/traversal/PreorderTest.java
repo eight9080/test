@@ -27,4 +27,37 @@ public class PreorderTest {
 
     }
 
+    @Test
+    public void tree2str() {
+        TreeNode root = new TreeNode(1);
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(3);
+        root.left=node1;
+        root.right=node2;
+
+        TreeNode node3 = new TreeNode(4);
+        node1.left=node3;
+
+        final Preorder p = new Preorder();
+        final String tree2str = p.tree2str(root);
+        assertEquals("1(2(4))(3)", tree2str);
+
+    }
+
+    @Test
+    public void tree2str2() {
+        TreeNode root = new TreeNode(1);
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(3);
+        root.left=node1;
+        root.right=node2;
+
+        TreeNode node3 = new TreeNode(4);
+        node1.right=node3;
+
+        final Preorder p = new Preorder();
+        final String tree2str = p.tree2str(root);
+        assertEquals("1(2()(4))(3)", tree2str);
+
+    }
 }
