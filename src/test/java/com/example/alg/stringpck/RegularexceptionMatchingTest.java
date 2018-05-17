@@ -18,4 +18,11 @@ public class RegularexceptionMatchingTest {
         assertThat(isMatch("aab", "c*a*b"), is(true));
     }
 
+    @Test
+    public void checkRecord() {
+
+        final RegularexceptionMatching r = new RegularexceptionMatching();
+        assertTrue(r.checkRecord("PPALLP"));
+        assertFalse(r.checkRecord("PPALLL"));
+    }
 }

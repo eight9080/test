@@ -48,7 +48,7 @@ public class RegularexceptionMatching {
             //case 2.2: a char & '*' can stand for 1 or more preceding element,
             //so try every sub string
             int i = 0;
-            while (i<s.length() && (s.charAt(i)==p.charAt(0) || p.charAt(0)=='.')){
+            while (i < s.length() && (s.charAt(i) == p.charAt(0) || p.charAt(0) == '.')) {
                 if (isMatch(s.substring(i + 1), p.substring(2))) {
                     return true;
                 }
@@ -57,4 +57,27 @@ public class RegularexceptionMatching {
             return false;
         }
     }
+
+
+    /**
+     * You are given a string representing an attendance record for a student. The record only contains the following three characters:
+     * 'A' : Absent.
+     * 'L' : Late.
+     * 'P' : Present.
+     * A student could be rewarded if his attendance record doesn't contain more than one 'A' (absent) or more than two continuous 'L' (late).
+     * <p>
+     * You need to return whether the student could be rewarded according to his attendance record.
+     * <p>
+     * Example 1:
+     * Input: "PPALLP"
+     * Output: True
+     * Example 2:
+     * Input: "PPALLL"
+     * Output: False
+     */
+    public boolean checkRecord(String s) {
+        return !s.matches(".*LLL.*|.*A.*A.*");
+    }
+
+
 }
