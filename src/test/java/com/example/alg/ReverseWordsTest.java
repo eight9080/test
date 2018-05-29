@@ -1,6 +1,7 @@
 package com.example.alg;
 
 import com.example.alg.stringpck.ReverseWords;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -17,5 +18,13 @@ public class ReverseWordsTest {
     public void reverseStringWithSpecialCharacters(){
         assertEquals("c,b$a", ReverseWords.reverseStringWithSpecialCharacters("a,b$c"));
         assertEquals("ed,c,bA!$", ReverseWords.reverseStringWithSpecialCharacters("Ab,c,de!$"));
+    }
+
+    @Test
+    public void reverseStringSimple() {
+
+        final ReverseWords r = new ReverseWords();
+        final String hello = r.reverseStringSimple("hello");
+        Assertions.assertThat(hello).isEqualTo("olleh");
     }
 }

@@ -13,6 +13,19 @@ import java.util.Arrays;
  */
 public class ReverseWords {
 
+    /**
+     * Write a function that takes a string as input and returns the string reversed.
+     *
+     * Example:
+     * Given s = "hello", return "olleh".
+     *
+     */
+    public String reverseStringSimple(String s) {
+        final char[] chars = s.toCharArray();
+        reverse(chars, 0, s.length()-1);
+        return new String (chars);
+    }
+
     public static String reverseString(String input) {
         final char[] chars = input.toCharArray();
         reverseWords(chars);
