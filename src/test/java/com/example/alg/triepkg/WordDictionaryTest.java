@@ -1,5 +1,6 @@
 package com.example.alg.triepkg;
 
+import com.example.alg.triepkg.dict.WordDictionary;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

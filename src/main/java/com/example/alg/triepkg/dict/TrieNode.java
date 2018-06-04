@@ -1,4 +1,4 @@
-package com.example.alg.triepkg;
+package com.example.alg.triepkg.dict;
 
 import java.util.HashMap;
 import java.util.Objects;

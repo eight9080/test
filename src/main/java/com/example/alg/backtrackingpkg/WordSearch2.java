@@ -1,7 +1,5 @@
 package com.example.alg.backtrackingpkg;
 
-import com.example.alg.triepkg.TrieNode;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

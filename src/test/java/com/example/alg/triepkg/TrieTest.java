@@ -1,5 +1,7 @@
 package com.example.alg.triepkg;
 
+import com.example.alg.triepkg.dict.Trie;
+import com.example.alg.triepkg.dict.TrieNode;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
