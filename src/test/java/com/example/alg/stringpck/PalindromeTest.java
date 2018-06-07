@@ -61,4 +61,9 @@ public class PalindromeTest {
                 Palindrome.palindromePairs(new String[]{"lol", "batlol", "tab"}));
     }
 
+    @Test
+    public void isPermutationOfPalindrome() {
+        final Palindrome p = new Palindrome();
+        assertTrue(p.isPermutationOfPalindrome("tact coa"));
+    }
 }

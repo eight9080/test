@@ -222,4 +222,50 @@ public class Palindrome {
 
         return reverse.substring(0, reverse.length()-next[target.length()-1]) + s;
     }
+
+
+    public boolean isPermutationOfPalindrome(String phrase){
+        final int bitVector = createBitVector(phrase);
+        return bitVector==0 || checkExactlyOneBitSet(bitVector);
+    }
+
+    private boolean checkExactlyOneBitSet(int bitVector) {
+        return (bitVector & (bitVector-1))==0;
+    }
+
+    //for each letter toggle the ith letter
+    private int createBitVector(String phrase) {
+        int bit = 0;
+
+        for (int i = 0; i < phrase.length(); i++) {
+            final char c = phrase.charAt(i);
+            int number = getCharNumber(c);
+            bit = toggle(bit, number);
+        }
+        return bit;
+    }
+
+    private int toggle(int bit, int number) {
+        if(number<=-1){
+            return bit;
+        }
+        int mask = 1 << number;
+        if((bit & mask)==0){
+            bit |= mask;
+        }else {
+            bit &= ~mask;
+        }
+        return bit;
+    }
+
+    private int getCharNumber(char c) {
+        final int a = Character.getNumericValue('a');
+        final int z = Character.getNumericValue('z');
+        final int num = Character.getNumericValue(c);
+        if(a<=num && num<=z){
+            return num-a;
+        }
+        return -1;
+    }
+
 }
