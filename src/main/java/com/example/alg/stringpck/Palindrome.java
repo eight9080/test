@@ -230,6 +230,7 @@ public class Palindrome {
     }
 
     private boolean checkExactlyOneBitSet(int bitVector) {
+        System.out.println(Integer.toBinaryString(bitVector));
         return (bitVector & (bitVector-1))==0;
     }
 
