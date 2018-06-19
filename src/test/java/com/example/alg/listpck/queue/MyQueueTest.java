@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class MyQueueTest {
     @Test
-    public void push() throws Exception {
+    public void push() {
 
         MyQueue obj = new MyQueue();
         obj.push(1);
