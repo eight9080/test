@@ -44,4 +44,69 @@ public class AddNumbers {
 
         return resultHead.next;
     }
+
+
+    //partial sum reverse 617 +295 = 912
+    public ListNode addLists(ListNode l1, ListNode l2){
+        final int len1 = l1.length();
+        final int len2 = l2.length();
+
+        //pad shorter list with zeros
+        if(len1<len2){
+            l1 = padList(l1, len2-len1);
+        }else {
+            l2 = padList(l2, len1-len2);
+        }
+
+        final PartialSum partialSum = addListsHelper(l1, l2);
+
+        if(partialSum.carry!=0){
+            partialSum.sum =  insertBefore(partialSum.sum, partialSum.carry);
+            partialSum.carry=0;
+        }
+
+        return partialSum.sum;
+    }
+
+    PartialSum addListsHelper(ListNode l1, ListNode l2){
+        if(l1==null && l2==null){
+            return new PartialSum();
+        }
+
+        final PartialSum partialSum = addListsHelper(l1.next, l2.next);
+
+        final int currentSum = partialSum.carry + l1.val + l2.val;
+
+        final ListNode resultNode = insertBefore(partialSum.sum, currentSum % 10);
+
+        partialSum.sum= resultNode;
+        partialSum.carry=currentSum/10;
+
+        return partialSum;
+    }
+
+    private ListNode padList(ListNode listNode, int padding) {
+        ListNode head = listNode;
+        for (int i = 0; i < padding; i++) {
+            head = insertBefore(head, 0);
+        }
+        return head;
+    }
+
+    private ListNode insertBefore(ListNode head, int data) {
+        final ListNode newHead = new ListNode(data);
+        if(head!=null){
+            newHead.next=head;
+        }
+        return newHead;
+    }
+
+
+    private static class PartialSum{
+
+        public ListNode sum = null;
+        public int carry = 0;
+
+    }
+
 }

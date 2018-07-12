@@ -41,6 +41,15 @@ public class ListNode {
         return text.toString();
     }
 
+    public int length(){
+        ListNode current = this;
+        int length = 0;
+        while (current!=null){
+            current=current.next;
+            length++;
+        }
+        return length;
+    }
 
 
     @Override

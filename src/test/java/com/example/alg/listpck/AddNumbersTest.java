@@ -2,6 +2,9 @@ package com.example.alg.listpck;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class AddNumbersTest {
@@ -29,4 +32,17 @@ public class AddNumbersTest {
 
     }
 
+    @Test
+    public void addLists() {
+
+        final ListNode l1 = ListNode.createList(Arrays.asList(6, 1, 7));
+        final ListNode l2 = ListNode.createList(Arrays.asList(2,9,5));
+
+        final ListNode expect = ListNode.createList(Arrays.asList(9,1,2));
+
+        final AddNumbers a = new AddNumbers();
+        final ListNode result = a.addLists(l1, l2);
+
+        assertEquals(expect, result);
+    }
 }
