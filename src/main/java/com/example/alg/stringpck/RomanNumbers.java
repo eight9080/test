@@ -1,5 +1,6 @@
 package com.example.alg.stringpck;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,5 +64,13 @@ public class RomanNumbers {
             }
         }
         return romanNumber.toString();
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<Integer> li = new ArrayList<Integer>();
+        ArrayList<Float> lf = new ArrayList<Float>();
+        if (li.getClass() == lf.getClass()) // evaluates to true
+            System.out.println("Equal");
     }
 }
