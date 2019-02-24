@@ -26,6 +26,23 @@ public class ListNode {
         return fakeHead.next;
     }
 
+    public static ListNode createListCycle(List<Integer> list, int position){
+        final ListNode fakeHead = new ListNode(0);
+        ListNode current = fakeHead;
+        ListNode cycleHead = null;
+        int currentPosition = 0;
+        for(Integer value : list){
+            current.next = new ListNode(value);
+            current=current.next;
+            if(currentPosition==position){
+                cycleHead = current;
+            }
+            currentPosition++;
+        }
+        current.next=cycleHead;
+        return fakeHead.next;
+    }
+
     public static String toStringList(ListNode head){
         ListNode temp = head;
         if(temp==null){
