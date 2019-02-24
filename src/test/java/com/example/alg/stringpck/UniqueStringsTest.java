@@ -12,4 +12,12 @@ public class UniqueStringsTest {
         assertTrue(s.isUniqueChars("abc"));
         assertFalse(s.isUniqueChars("aasd"));
     }
+
+    @Test
+    public void uniqueLetterString() {
+
+        final UniqueStrings us = new UniqueStrings();
+        assertEquals(10, us.uniqueLetterString("ABC"));
+        assertEquals(8, us.uniqueLetterString("ABA"));
+    }
 }
