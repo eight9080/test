@@ -59,8 +59,8 @@ public class ReverseWords {
     }
 
     public static String reverseStringJava8(String input) {
-        final String[] strings = input.split(" ");
-        return Arrays.stream(strings).reduce("", (a, b) -> b + " " + a).trim();
+        final String[] strings = input.split("\\s+");
+        return Arrays.stream(strings).map(String::trim).reduce("", (a, b) -> b + " " + a).trim();
     }
 
     /**

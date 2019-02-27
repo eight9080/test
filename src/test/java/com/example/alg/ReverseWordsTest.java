@@ -10,6 +10,7 @@ public class ReverseWordsTest {
 
     @Test
     public void reverseString() throws Exception {
+        assertEquals("example good a", ReverseWords.reverseStringJava8("a good  example"));
         assertEquals("blue is sky the", ReverseWords.reverseString("the sky is blue"));
         assertEquals("blue is sky the", ReverseWords.reverseStringJava8("the sky is blue"));
     }
