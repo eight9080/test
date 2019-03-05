@@ -34,4 +34,12 @@ public class SortedArrayTest {
         assertEquals(3, s.transitionPoint(new int[]{0, 0, 0, 1, 1}, 5));
     }
 
+    @Test
+    public void findExtra() {
+        final SortedArray s = new SortedArray();
+        assertEquals(6, s.findExtra(new int[]{1, 3, 5, 7, 9, 11}, new int[]{1, 3, 5, 7, 9, 11, 21}, 6));
+        assertEquals(4, s.findExtra(new int[]{2, 4, 6, 8, 9, 10, 12}, new int[]{2, 4, 6, 8, 10, 12}, 7));
+        assertEquals(3, s.findExtra(new int[]{3, 5, 7, 9, 11, 13}, new int[]{3, 5, 7, 11, 13}, 6));
+
+    }
 }
