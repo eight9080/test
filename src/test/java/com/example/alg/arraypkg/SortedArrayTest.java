@@ -28,4 +28,10 @@ public class SortedArrayTest {
         assertArrayEquals(new int[]{1,2,2}, input);
     }
 
+    @Test
+    public void transitionPoint(){
+        final SortedArray s = new SortedArray();
+        assertEquals(3, s.transitionPoint(new int[]{0, 0, 0, 1, 1}, 5));
+    }
+
 }
