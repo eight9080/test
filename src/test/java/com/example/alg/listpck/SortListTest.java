@@ -20,4 +20,16 @@ public class SortListTest {
         assertEquals(ListNode.createList(expected), listNode);
 
     }
+
+    @Test
+    public void linkSort(){
+
+        final SortList s = new SortList();
+        final ListNode list = ListNode.createList(Arrays.asList(1, 2, 2, 1, 2, 0, 2, 2));
+        final ListNode listNode = s.linkSort(list);
+        System.out.println(ListNode.toStringList(listNode));
+        final List<Integer> expected = Arrays.asList(0, 1, 1, 2, 2, 2, 2, 2);
+        assertEquals(ListNode.createList(expected), listNode);
+
+    }
 }
