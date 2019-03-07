@@ -75,4 +75,37 @@ public class SortList {
         return helper.next;
 
     }
+
+    /**
+     * Given a linked list L of N nodes, sorted in ascending order based on the absolute values of its data. Sort the linked list according to the actual values.
+     * Ex: Input : 1 -> -2 -> -3 -> 4 -> -5
+     *       Output: -5 -> -3 -> -2 -> 1 -> 4
+     */
+    ListNode sortedList(ListNode head){
+
+        ListNode prev = head;
+        ListNode current = head.next;
+
+        while (current!=null){
+
+            if(current.val<prev.val){
+                //skip current node
+                prev.next=current.next;
+                //move to the front
+                current.next=head;
+                head = current;
+                //update current
+                current=prev;
+
+            }else {
+                prev=current;
+            }
+
+            current = current.next;
+        }
+
+        return head;
+
+    }
+
 }

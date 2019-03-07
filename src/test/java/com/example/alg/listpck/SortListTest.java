@@ -32,4 +32,15 @@ public class SortListTest {
         assertEquals(ListNode.createList(expected), listNode);
 
     }
+
+    @Test
+    public void sortedList(){
+        final SortList s = new SortList();
+        final ListNode list = ListNode.createList(Arrays.asList(1, -2, -3, 4, -5));
+        final ListNode listNodeResult = s.sortedList(list);
+        final List<Integer> expected = Arrays.asList(-5, -3, -2, 1, 4);
+        assertEquals(ListNode.createList(expected), listNodeResult);
+
+    }
+
 }
