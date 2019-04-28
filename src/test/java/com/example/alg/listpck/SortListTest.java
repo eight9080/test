@@ -2,9 +2,10 @@ package com.example.alg.listpck;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
@@ -35,6 +36,14 @@ public class SortListTest {
 
     @Test
     public void sortedList(){
+
+        final Stream.Builder<String> builder = Stream.builder();
+        builder.add("1")
+        .add("2").add("3");
+
+        final Stream<String> stream = builder.build();
+
+
         final SortList s = new SortList();
         final ListNode list = ListNode.createList(Arrays.asList(1, -2, -3, 4, -5));
         final ListNode listNodeResult = s.sortedList(list);
