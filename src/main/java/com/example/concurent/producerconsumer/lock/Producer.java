@@ -1,4 +1,4 @@
-package com.example.concurent.producerconsumer;
+package com.example.concurent.producerconsumer.lock;
 
 public class Producer extends Thread {
 

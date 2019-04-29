@@ -1,4 +1,4 @@
-package com.example.concurent.producerconsumer;
+package com.example.concurent.producerconsumer.lock;
 
 import java.security.SecureRandom;
 import java.util.LinkedList;
