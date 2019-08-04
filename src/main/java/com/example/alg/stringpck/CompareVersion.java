@@ -1,5 +1,8 @@
 package com.example.alg.stringpck;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class CompareVersion {
 
     /**
@@ -50,4 +53,31 @@ public class CompareVersion {
 
         return 0;
     }
+
+    /**
+     * 844. Backspace String Compare
+     * Given two strings S and T, return if they are equal when both are typed into empty text editors.
+     * # means a backspace character.
+     * @param S
+     * @param T
+     * @return
+     */
+    public boolean backspaceCompare(String S, String T) {
+        return buildString(S).equals(buildString(T));
+    }
+
+
+    private String buildString(String text){
+        Deque<Character> stack = new ArrayDeque<>();
+
+        for(char character : text.toCharArray()){
+            if(character!='#'){
+                stack.push(character);
+            }else {
+                stack.poll();
+            }
+        }
+        return String.valueOf(stack);
+    }
+
 }

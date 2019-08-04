@@ -17,4 +17,12 @@ public class CompareVersionTest {
 
     }
 
+    @Test
+    public void backspaceCompare() {
+        final CompareVersion c = new CompareVersion();
+        assertTrue(c.backspaceCompare("ab#c", "ad#c"));
+        assertTrue(c.backspaceCompare("ab##", "c#d#"));
+        assertTrue(c.backspaceCompare("a##c", "#a#c"));
+        assertFalse(c.backspaceCompare("a#c", "b"));
+    }
 }
