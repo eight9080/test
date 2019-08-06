@@ -28,4 +28,11 @@ public class ReverseWordsTest {
         final String hello = r.reverseStringSimple("hello");
         Assertions.assertThat(hello).isEqualTo("olleh");
     }
+
+    @Test
+    public void reverseStr() {
+        final ReverseWords r = new ReverseWords();
+        Assertions.assertThat(r.reverseStr("abcdefg",2)).isEqualTo("bacdfeg");
+        Assertions.assertThat(r.reverseStr("a",2)).isEqualTo("a");
+    }
 }

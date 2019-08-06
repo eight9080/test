@@ -4,26 +4,25 @@ import java.util.Arrays;
 
 /**
  * Given an input string, reverse the string word by word. A word is defined as a sequence of non-space characters.
-
- The input string does not contain leading or trailing spaces and the words are always separated by a single space.
-
- For example,
- Given s = "the sky is blue",
- return "blue is sky the".
+ * <p>
+ * The input string does not contain leading or trailing spaces and the words are always separated by a single space.
+ * <p>
+ * For example,
+ * Given s = "the sky is blue",
+ * return "blue is sky the".
  */
 public class ReverseWords {
 
     /**
      * Write a function that takes a string as input and returns the string reversed.
-     *
+     * <p>
      * Example:
      * Given s = "hello", return "olleh".
-     *
      */
     public String reverseStringSimple(String s) {
         final char[] chars = s.toCharArray();
-        reverse(chars, 0, s.length()-1);
-        return new String (chars);
+        reverse(chars, 0, s.length() - 1);
+        return new String(chars);
     }
 
     public static String reverseString(String input) {
@@ -92,9 +91,9 @@ public class ReverseWords {
                 if (!Character.isLetterOrDigit(chars[right])) {
                     right--;
                 } else {
-                        swap(chars, left, right);
-                        left++;
-                        right--;
+                    swap(chars, left, right);
+                    left++;
+                    right--;
                 }
             }
         }
@@ -106,4 +105,34 @@ public class ReverseWords {
         chars[left] = chars[right];
         chars[right] = temp;
     }
+
+
+    /**
+     * 541. Reverse String II
+     * Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.
+     * Example:
+     * Input: s = "abcdefg", k = 2
+     * Output: "bacdfeg"
+     */
+    public String reverseStr(String s, int k) {
+
+
+        final char[] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; i += 2 * k) {
+
+            int posStart = i;
+            int posEnd = Math.min(posStart + k, chars.length) -1;
+
+            while (posStart < posEnd) {
+                swap(chars, posStart, posEnd);
+                posStart++;
+                posEnd--;
+            }
+
+        }
+
+        return new String(chars);
+    }
+
 }
