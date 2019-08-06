@@ -1,7 +1,6 @@
 package com.example.alg.treepck.traversal;
 
 import com.example.alg.treepck.TreeNode;
-import org.omg.CORBA.INTERNAL;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
