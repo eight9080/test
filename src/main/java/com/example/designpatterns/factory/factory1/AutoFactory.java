@@ -41,8 +41,9 @@ public class AutoFactory {
      * @throws IOException
      */
     private void getCarTypes() throws IOException {
-        final ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-        final ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(contextClassLoader).getTopLevelClasses("com.example.designpatterns.factory.factory1.cars");
+//        final ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+
+        final ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClasses("com.example.designpatterns.factory.factory1.cars");
         System.out.println("TopLevel classes size: "+topLevelClasses.size());
         for (ClassPath.ClassInfo classInfo: topLevelClasses) {
 
