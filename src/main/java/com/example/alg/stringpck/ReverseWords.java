@@ -47,6 +47,27 @@ public class ReverseWords {
 
     }
 
+    /**
+     * 557. Reverse Words in a String III
+     * Given a string, you need to reverse the order of characters in each word within
+     * a sentence while still preserving whitespace and initial word order.
+     *
+     */
+    public String reverseWords(String s) {
+        final char[] chars = s.toCharArray();
+        int start = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if(chars[i] == ' '){
+                reverse(chars, start, i-1);
+                start=i+1;
+            }
+        }
+        if(start<chars.length) {
+            reverse(chars, start, chars.length-1);
+        }
+        return  new String(chars);
+    }
+
     private static void reverse(char[] s, int i, int j) {
         while (i < j) {
             char temp = s[i];

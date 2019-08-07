@@ -35,4 +35,11 @@ public class ReverseWordsTest {
         Assertions.assertThat(r.reverseStr("abcdefg",2)).isEqualTo("bacdfeg");
         Assertions.assertThat(r.reverseStr("a",2)).isEqualTo("a");
     }
+
+    @Test
+    public void reverseWords() {
+        final ReverseWords r = new ReverseWords();
+        Assertions.assertThat(r.reverseWords("Let's take LeetCode contest"))
+                .isEqualTo("s'teL ekat edoCteeL tsetnoc");
+    }
 }
