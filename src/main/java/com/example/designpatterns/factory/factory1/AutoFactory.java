@@ -21,6 +21,7 @@ public class AutoFactory {
 
         final Optional<? extends Class<IAuto>> typeToCreate = getTypeToCreate(carName);
         if(!typeToCreate.isPresent()){
+            System.out.println("No type found for name "+ carName);
             return NullCar.NULL_CAR;
         }
 
@@ -47,6 +48,7 @@ public class AutoFactory {
             final Class<?> aClass = classInfo.load();
             if(IAuto.class.isAssignableFrom(aClass)) {
                 autoTypes.put(aClass.getSimpleName().toLowerCase(), (Class<IAuto>) aClass);
+                System.out.println("Classes added to autoTypes"+aClass.getSimpleName().toLowerCase());
             }
         }
     }
