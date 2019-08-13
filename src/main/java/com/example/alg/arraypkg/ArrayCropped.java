@@ -1,5 +1,9 @@
 package com.example.alg.arraypkg;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ArrayCropped {
 
     /**
@@ -53,5 +57,33 @@ public class ArrayCropped {
             resultRow++;
         }
         return  result;
+    }
+
+
+    /**
+     * 830. Positions of Large Groups
+     * In a string S of lowercase letters, these letters form consecutive groups of the same character.
+     *
+     * For example, a string like S = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z" and "yy".
+     *
+     * Call a group large if it has 3 or more characters. We would like the starting and ending positions of every large group.
+     *
+     * The final answer should be in lexicographic order.
+     */
+    public List<List<Integer>> largeGroupPositions(String S) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        final char[] chars = S.toCharArray();
+        int start = 0;
+        for (int i = 0; i <= chars.length ; i++) {
+           if(i==chars.length || chars[start]!=chars[i] ){
+               if(i-start>=3){
+                   result.add(Arrays.asList(start, i-1));
+               }
+               start=i;
+           }
+
+        }
+        return result;
     }
 }

@@ -3,6 +3,11 @@ package com.example.alg.arraypkg;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 public class ArrayCroppedTest {
@@ -86,4 +91,24 @@ public class ArrayCroppedTest {
         return cropped;
     }
 
+    @Test
+    public void largeGroupPositions() {
+
+        final ArrayCropped arrayCropped = new ArrayCropped();
+
+        final List<List<Integer>> groupPositions0 = arrayCropped.largeGroupPositions("aaa");
+        assertEquals(Collections.singletonList(asList(0,2)), groupPositions0);
+
+
+        final List<List<Integer>> groupPositions1 = arrayCropped.largeGroupPositions("abbxxxxzzy");
+        assertEquals(Collections.singletonList(asList(3, 6)), groupPositions1);
+
+        final List<List<Integer>> groupPositions2 = arrayCropped.largeGroupPositions("abc");
+        assertEquals(Collections.emptyList(), groupPositions2);
+
+        final List<List<Integer>> groupPositions3 = arrayCropped.largeGroupPositions("abcdddeeeeaabbbcd");
+        assertEquals(asList(asList(3,5), asList(6,9), asList(12, 14)), groupPositions3);
+
+
+    }
 }
