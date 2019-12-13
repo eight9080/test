@@ -1,6 +1,7 @@
 package ro.dg
 
 import scala.collection.mutable
+
 import scala.collection.mutable.ArrayBuffer
 
 class Inheritance {
@@ -33,7 +34,8 @@ class DiscountedCustomer(name: String, address: String) extends CustomerInhe(nam
 
 
 class ShoppingBasket{
-  private var _value: Double = 0
+  import scala.collection.mutable.Seq
+  private var _value: Double = 0d
   var items: Seq[Item] = ArrayBuffer.empty[Item]
 
   def add(item: Item ){
@@ -80,7 +82,7 @@ class Customers extends Sortable[CustomerInhe]{
 }
 
 class CustomersSortableBySpend extends Customers{
-  override def sort: List[CustomerInhe] = {
+  override def sort: scala.collection.immutable.List[CustomerInhe] = {
     this.toList.sorted((x: CustomerInhe, y: CustomerInhe) => x.total.compare(y.total))
   }
 
