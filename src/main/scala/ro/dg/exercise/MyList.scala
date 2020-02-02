@@ -11,15 +11,15 @@ abstract class MyList[+A] {
   def printElements : String
   override def toString: String = "["+ printElements+"]"
 
-  def map[B](transformer: MyTransformer[A,B]): MyList[B]
-  def filter(predicate: MyPredicate[A]) : MyList[A]
-  def flatMap[B](transformer: MyTransformer[A, MyList[B]]): MyList[B]
+  def map[B](transformer: A => B): MyList[B]
+  def filter(predicate: A => Boolean) : MyList[A]
+  def flatMap[B](transformer: A => MyList[B]): MyList[B]
 
   def ++[B>:A](list: MyList[B]) : MyList[B]
 
 }
 
-object Empty extends MyList[Nothing]{
+case object Empty extends MyList[Nothing]{
   override def head: Nothing = throw new NoSuchElementException
 
   override def tail: MyList[Nothing] = throw new NoSuchElementException
@@ -30,16 +30,16 @@ object Empty extends MyList[Nothing]{
 
   override def printElements: String = ""
 
-  override def map[B](transformer: MyTransformer[Nothing, B]): MyList[B] = Empty
+  override def map[B](transformer: Nothing => B): MyList[B] = Empty
 
-  override def filter(predicate: MyPredicate[Nothing]): MyList[Nothing] = Empty
+  override def filter(predicate: Nothing => Boolean): MyList[Nothing] = Empty
 
-  override def flatMap[B](transformer: MyTransformer[Nothing, MyList[B]]): MyList[B] = Empty
+  override def flatMap[B](transformer: Nothing => MyList[B]): MyList[B] = Empty
 
   override def ++[B >: Nothing](list: MyList[B]): MyList[B] = list
 }
 
-class Cons[+A](h:A, t: MyList[A]) extends MyList[A]{
+case class Cons[+A](h:A, t: MyList[A]) extends MyList[A]{
 
   override def head: A = h
 
@@ -53,17 +53,17 @@ class Cons[+A](h:A, t: MyList[A]) extends MyList[A]{
     if(t.isEmpty) ""+h
     else h +" "+t.printElements
 
-  override def map[B](transformer: MyTransformer[A, B]): MyList[B] = {
-    new Cons(transformer.transform(h), t.map(transformer))
+  override def map[B](transformer: A => B): MyList[B] = {
+    new Cons(transformer(h), t.map(transformer))
   }
 
-  override def filter(predicate: MyPredicate[A]): MyList[A] = {
-    if(predicate.test(h)) new Cons(h, t.filter(predicate))
+  override def filter(predicate: A => Boolean): MyList[A] = {
+    if(predicate(h)) new Cons(h, t.filter(predicate))
     else t.filter(predicate)
   }
 
-  override def flatMap[B](transformer: MyTransformer[A, MyList[B]]): MyList[B] = {
-    transformer.transform(h) ++ t.flatMap(transformer)
+  override def flatMap[B](transformer: A => MyList[B]): MyList[B] = {
+    transformer(h) ++ t.flatMap(transformer)
   }
 
   override def ++[B >: A](list: MyList[B]): MyList[B] = {
@@ -72,21 +72,21 @@ class Cons[+A](h:A, t: MyList[A]) extends MyList[A]{
 
 }
 
-trait MyPredicate[-T]{
-  def test(value: T): Boolean
-}
-class EvenPredicate extends MyPredicate[Int]{
-  override def test(value: Int): Boolean = if(value==0) true else value%2==0
-}
+//trait MyPredicate[-T]{
+//  def test(value: T): Boolean
+//}
+//class EvenPredicate extends MyPredicate[Int]{
+//  override def test(value: Int): Boolean = if(value==0) true else value%2==0
+//}
 
 
-trait MyTransformer[-A, B]{
-  def transform(value: A): B
-}
+//trait MyTransformer[-A, B]{
+//  def transform(value: A): B
+//}
 
-class StringToInt extends MyTransformer[String, Int]{
-  override def transform(value: String): Int = value.toInt
-}
+//class StringToInt extends MyTransformer[String, Int]{
+//  override def transform(value: String): Int = value.toInt
+//}
 
 object ListTest extends App{
 
@@ -105,14 +105,17 @@ object ListTest extends App{
   println(newListOfAnimals.toString)
   println(newListOfAnimals.getClass)
 
-  println(listOfIntegers.map(new MyTransformer[Int, Int] {
-    override def transform(value: Int): Int = value * 2
-  }).toString)
+  println(listOfIntegers.map(_ * 2).toString)
+
+  println(listOfIntegers.filter(_ % 2 == 0))
 
   println(listOfIntegers++anotherListOfIntegers)
 
-  println(listOfIntegers.flatMap(new MyTransformer[Int, MyList[Int]] {
-    override def transform(value: Int): MyList[Int] = new Cons[Int](value, new Cons[Int](value+1, Empty))
-  }).toString)
+  println(listOfIntegers.flatMap(value =>  new Cons[Int](value, new Cons[Int](value+1, Empty))).toString)
+
+//  def concatenator: (String, String) => String = new Function2[String, String, String] {
+//    override def apply(v1: String, v2: String): String = v1+v2
+//  }
+//  println(concatenator("1","20"))
 
 }
