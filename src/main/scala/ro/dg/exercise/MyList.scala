@@ -137,6 +137,9 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
 //  override def transform(value: String): Int = value.toInt
 //}
 
+
+
+
 object ListTest extends App {
 
   //  val list = new Cons(1, new Cons(2, new Cons(3, Empty)))
@@ -168,6 +171,13 @@ object ListTest extends App {
 
   println(anotherListOfIntegers.zipWith[String, String](listOfString, _+"-"+_))
   println(listOfIntegers.fold(1)((a,b) => a+b))
+
+  //for comprehensions
+  val combinations = for {
+    n <-listOfIntegers
+    string <-listOfString
+  } yield n +"---"+ string
+  println(combinations)
 
   //  def concatenator: (String, String) => String = new Function2[String, String, String] {
   //    override def apply(v1: String, v2: String): String = v1+v2
