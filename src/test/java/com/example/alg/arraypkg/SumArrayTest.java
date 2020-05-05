@@ -16,4 +16,15 @@ public class SumArrayTest {
         assertArrayEquals(new int[]{1,2}, indexes);
 
     }
+
+    @Test
+    public void two_sum() {
+
+        final SumArray s = new SumArray();
+
+        final boolean existsTwoSum = s.existsTwoSum(new int[]{2, 7, 11, 15}, 9);
+
+        assertTrue(existsTwoSum);
+
+    }
 }
