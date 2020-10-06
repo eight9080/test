@@ -21,4 +21,14 @@ public class ValidParenthesesTest {
         assertEquals(4, v.longestValidParentheses(")()())"));
         assertEquals(2, v.longestValidParentheses("(()"));
     }
+
+    @Test
+    public void checkValidString() {
+        final ValidParentheses v = new ValidParentheses();
+        assertFalse( v.checkValidString(")()())"));
+        assertFalse(v.checkValidString("(()"));
+        assertTrue(v.checkValidString("(())"));
+        assertTrue(v.checkValidString("(*)"));
+        assertTrue(v.checkValidString("(*))"));
+    }
 }
