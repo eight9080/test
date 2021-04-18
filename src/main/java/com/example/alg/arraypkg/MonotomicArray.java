@@ -1,11 +1,6 @@
 package com.example.alg.arraypkg;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import java.util.Arrays;
 import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class MonotomicArray {
 
